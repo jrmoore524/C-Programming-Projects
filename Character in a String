@@ -1,0 +1,44 @@
+/*--------------------------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : October 18, 2020
+Description : This program will ask the user for a string, and then print the string and how many 'e' characters are in the string
+ --------------------------------------------------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+	int count, length, total = 0;
+	char checkCharacter = 'e';
+	string string;
+
+	//Explain the program to the user and allow them to input a string
+	cout << "This program will ask you for a string(a word or sentence), and tell you how many lower-case 'e' characters";
+	cout << " are in the string." << endl;
+	cout << "\n";
+	cout << "Please enter a string:" << endl;
+	getline(cin,string);
+	length = string.length();
+	cout << "\n";
+
+	//Output the string
+	cout << "String : " << "\"" << string << "\"" << endl;
+	cout << "There are ";
+
+	//For loop to check all characters in the string for 'e'
+	for (count = 0; count < length; count++)
+	{
+		if (string.at(count) == checkCharacter)
+			++total;
+	}
+
+	//Output total 'e' characters in the string
+	cout << total << " 'e' characters in the string" << endl;
+	cout << "\n";
+	
+	//End the program
+	return 0;
+}
