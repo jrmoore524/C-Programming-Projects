@@ -1,0 +1,45 @@
+/*-----------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date Due : September 20, 2020
+Description : This program will ask the user for two numbers (both doubles) and let the user input the values.
+The program will then calculate and output how far away from 25 each value is.
+-------------------------------------------------------------------------------------------------------------*/
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+
+	double number1, number2, firstDistanceFrom25, secondDistanceFrom25, twentyFive = 25.0;
+	string number = "Number", distance = "Distance from 25";
+	
+	//Explain the program to the user, prompt the user to input two double values, and allow the user to input the values
+
+	cout << "This program will ask you for 2 double values, and calculate how far away from 25 the values are." << endl;
+	cout << "Please enter a value for the first number, and make sure it has a decimal point with no more than 3 decimal places:" << endl;
+	cin >> number1;
+	cout << "Please enter a value for the second number, and make sure it has a decimal point with no more than 3 decimal places:" << endl;
+	cin >> number2;
+
+	//Calculate the distance from 25 of each value that was inputted
+
+	firstDistanceFrom25 = twentyFive - number1;
+	secondDistanceFrom25 = twentyFive - number2;
+
+	//Convert firstDistanceFrom25 and secondDistanceFrom25 to absolute values to avoid returning negative values
+
+	firstDistanceFrom25 = fabs(firstDistanceFrom25);
+	secondDistanceFrom25 = fabs(secondDistanceFrom25);
+
+	//Output the values that were inputted by the user, and the distance from 25 of each of the values, and end the program
+
+	cout << setw(6) << number << setw(23) << distance << endl;
+	cout << "=============================" << endl;
+	cout << setw(6) << setprecision(3) << fixed << number1 << setw(23) << setprecision(4) << fixed << firstDistanceFrom25 << endl;
+	cout << setw(6) << setprecision(3) << fixed << number2 << setw(23) << setprecision(4) << fixed << secondDistanceFrom25 << endl;
+	return 0;
+}
