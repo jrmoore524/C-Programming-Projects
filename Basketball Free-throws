@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	// Define variables
+
+	string playersFirstName, playersLastName;
+	int freeThrowsAttempted, freeThrowsMade;
+	double freeThrowAverage;
+
+	// Get inputs for players name, free throws attempted, and free throws made
+
+	cout << "Please enter the basketball players name:" << endl;
+	cin >> playersFirstName >> playersLastName;
+	cout << "Please enter the number of free throws attempted:" << endl;
+	cin >> freeThrowsAttempted;
+	cout << "Please enter the number of free throws made:" << endl;
+	cin >> freeThrowsMade;
+
+	//Calculate free throw average
+	//To return a float value for freeThrowAverage, type cast one or both of the operands to a double
+
+	freeThrowAverage = (double)freeThrowsMade / freeThrowsAttempted;
+
+	//Print the players name, free throws attempted, free throws made, and free throw average
+
+	cout << "Name : " << playersFirstName << " " << playersLastName << endl;
+	cout << "Free throws attempted = " << freeThrowsAttempted << endl;
+	cout << "Free throws made      = " << freeThrowsMade << endl;
+	cout << "Average               = " << freeThrowAverage << endl;
+	return 0;
+}
