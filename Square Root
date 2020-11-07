@@ -1,0 +1,38 @@
+/*-------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date Due : September 27, 2020
+Description : This program will ask the user for one number and prompt the user to input the value.
+It will then tell the user what the numbers approximate square root is(if it has one)
+-------------------------------------------------------------------------------------------------*/
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+
+	double number1;
+
+	//Explain the program to the user, prompt the user to enter a value for the number, and allow the user to enter the value
+
+	cout << "This program will ask you for one number, and then print the number and the approximate square root of that number (if it has one)." << endl;
+	cout << "Please enter a value for the number:" << endl;
+	cin >> number1;
+	
+	//Use a IF statement to determine the approximate square root of the value entered (if it has one or not), and output the results for the user, and end the program
+
+	if (number1 > 0)
+	{
+		cout << "You entered " << setprecision(4) << fixed << number1 << endl;
+		cout << "Its square root is apprximately " << setprecision(5) << fixed << sqrt(number1) << endl;
+	}
+	if (number1 < 0)
+	{
+		cout << "You entered " << setprecision(4) << fixed << number1 << endl;
+		cout << "Its has no real square root" << endl;
+	}
+	return 0;
+}
