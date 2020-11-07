@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	string school, ourClass;
+	char letter1, letter2, letter4;
+	
+	school = "Tarrant County College";
+	ourClass = "COSC-1436";
+	letter1 = 'T';
+	letter2 = 'C';
+	letter4 = 'D';
+
+	cout << "Our school is " << school << ", and its abbreviation is " << letter1 << letter2 << letter2 << letter4 << "." << endl;
+	cout << "We're in " << ourClass << "." << endl;
+	return 0;
+}
