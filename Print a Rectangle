@@ -1,0 +1,44 @@
+/*----------------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : October 18, 2020
+Description :This program will ask you for the length and width of a rectangle, and then print the rectangle made of x's
+ ----------------------------------------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+	int length, width, counterOne, counterTwo;
+
+	//Explain the program to the user and get the users input for length and width of a rectangle
+	cout << "This program will ask you for the length and width of a rectangle, and then print the rectangle made of x's." << endl;
+	cout << "Please enter the length and width of the rectangle (press enter after each input)." << endl;
+	cin >> length >> width;
+	cout << "\n";
+
+	//While loop to validate if length and width are greater than 1
+	while ((length > 1) && (width > 1))
+	{
+		cout << "length = " << length << " and width = " << width << endl;
+		for (counterOne = 1; counterOne <= width; counterOne++)
+		{
+			for (counterTwo = 1; counterTwo <= length; counterTwo++)
+				cout << "x ";
+				cout << endl;
+		}
+		break;
+	}
+	//While loop to validate if length and width are less than 1
+	while ((length < 1) || (width < 1))
+	{
+		cout << "You entered " << length << " and " << width << endl;
+		cout << "Both numbers must be at least 1" << endl;
+		break;
+	}
+	//End the program
+	return 0;
+}
+	
