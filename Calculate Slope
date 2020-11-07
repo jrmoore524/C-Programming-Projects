@@ -1,0 +1,58 @@
+/*------------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : October 27, 2020
+Description : This program will ask the user for two points representing the points of a slope in the form of
+(x1, y1) and (x2, y2). The program will then calculate the slope and save the results to a file named slope.txt.
+ ------------------------------------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	//Set Windows System color (black background with green text)
+	system("color 02");
+
+	//Define variables
+	ofstream outputFile;
+	int x1, y1, x2, y2;
+	double slope;
+
+	//Explain the program to the user and get the input for the points of the slope
+	cout << "This program will ask you for two points representing the points of a slope in the form of (x1, y1)" << endl;
+	cout << "and (x2, y2). The program will then calculate the slope and save the results to a file named slope.txt." << endl;
+	cout << "\n" << endl;
+
+	//Get the points of the slope from the user
+	cout << "Please enter the points of the slope: " << endl;
+	cout << "\n" << endl;
+	cout << "Enter the value for x1:" << endl;
+	cin >> x1;
+	cout << "Enter the value for y1:" << endl;
+	cin >> y1;
+	cout << "Enter the value for x2:" << endl;
+	cin >> x2;
+	cout << "Enter the value for y2:" << endl;
+	cin >> y2;
+	cout << "\n" << endl;
+
+	//Calculate the slope based on users inputted values for the points of the slope
+	slope = static_cast<double>(y2 - y1) / (x2 - x1);
+
+	//Open the slope.txt file
+	outputFile.open("slope.txt");
+
+	//Write the point and slope data to the file
+	outputFile << "Point 1 : (" << x1 << ", " << y1 << ")" << endl;
+	outputFile << "Point 2 : (" << x2 << ", " << y2 << ")" << endl;
+	outputFile << setprecision(4) << fixed << "Slope   : " << slope << endl;
+
+	//Tell the user the data has been saved and the program has ended
+	cout << "Your points of (" << x1 << "," << y1 << ") (" << x2 << "," << y2 << ") and the calculated slope have been saved to slope.txt." << endl;
+
+	//End the program
+	return 0;
+}
