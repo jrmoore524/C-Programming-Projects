@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+
+	int numberOfDonuts, numberOfPeople, totalDonuts, donutsLeft;
+
+	// Get the number of donuts and number of people attending the meeting
+
+	cout << "Please enter the number of donuts to buy:" << endl;
+	cin >> numberOfDonuts;
+	cout << "Please enter the number of people who will be attending the meeting:" << endl;
+	cin >> numberOfPeople;
+
+	//Calculate the total donuts and number of donuts left
+
+	totalDonuts = numberOfPeople * 3;
+	donutsLeft = numberOfDonuts % numberOfPeople;
+
+	//Print the number of donuts, number of people in the meeting, number of donuts each person gets, and number of leftover donuts
+
+	cout << "Number of donuts = " << numberOfDonuts << endl;
+	cout << "Number of people = " << numberOfPeople << endl;
+	cout << "Each person gets 3 donuts" << endl;
+	cout << "There will be " << donutsLeft << " donuts left" << endl;
+	return 0;
+}
