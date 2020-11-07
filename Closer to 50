@@ -1,0 +1,34 @@
+/*-------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date Due : September 27, 2020
+Description : This program will ask the user for two values and prompt the user to input the values.
+It will then output which of the numbers is closer to 50.
+--------------------------------------------------------------------------------------------------*/
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+
+	double number1, number2;
+
+	//Explain the program to the user, prompt the user to enter two values, and allow the user to enter the values
+
+	cout << "This program will ask you for two numbers, and then tell you which number is closer to 50." << endl;
+	cout << "Please enter the value for the first number:" << endl;
+	cin >> number1;
+	cout << "Please enter the value for the second number:" << endl;
+	cin >> number2;
+
+	//Use a IF statement to determine which value is closer to 50, and output the results for the user, and end the program
+
+	if (abs(50 - number1) < abs(50 - number2))
+		cout << "The value of " << setprecision(3) << fixed << number1 << " is closer to 50 than the value " << number2 << endl;
+	if (abs(50 - number2) < abs(50 - number1))
+		cout << "The value of " << setprecision(3) << fixed << number2 << " is closer to 50 than the value " << number1 << endl;
+	return 0;
+}
