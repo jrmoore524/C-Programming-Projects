@@ -1,0 +1,130 @@
+/*-------------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : October 11, 2020
+Description : This program will give the user 3 choices.
+* For choice 1,the program will ask the user for two integers, and output the integers and their total. It will repeat
+this process until one of the numbers is negative. If one of the numbers is negative the program will tell the user that
+one of the numbers is negative, and reset to the main menu
+* For choice 2, the program will ask the user for two lower-case strings, and tell the user which one would come first
+alphabetically. It will repeat this process until the lower-case string "stop" is used as one of the strings, and then
+it will reset to the main menu
+* For choice 3, the program will end
+ --------------------------------------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+	string stringOne, stringTwo;
+	int choice, integerOne, integerTwo, integerTotal;
+
+	//Explain the program to the user and show the menu options, and prompt the user to make a menu choice
+	cout << "This program will give you 3 choices." << endl;
+	cout << "\n" << endl;
+	cout << "For choice 1, the program will ask the user for two integers, and output the integers and their total." << endl;
+	cout << "It will repeat the process until one of the numbers is negative, and at that point it will tell the user that one of the";
+	cout << " numbers is negative, and then return to the main menu." << endl;
+	cout << "\n" << endl;
+	cout << "For choice 2, the program will ask the user for two lower-case strings (words), and tell the user which one would come first alphabetically." << endl;
+	cout << "The program will repeat until the word 'stop' is entered for one of the strings, then it will return to the main menu" << endl;
+	cout << "\n" << endl;
+	cout << "For choice 3, the program will end." << endl;
+	cout << "\n" << endl; 
+
+	//Do/While loop to keep program displaying the menu when program is restarted
+	do
+	{
+		//Output the menu
+		cout << "Menu" << endl;
+		cout << "====" << endl;
+		cout << "1. Addition of non-negative numbers" << endl;
+		cout << "2. Alphabetize strings" << endl;
+		cout << "3. Exit" << endl;
+		cout << "\n" << endl;
+		cout << "Enter your choice:" << endl;
+		cin >> choice;
+		cout << "\n" << endl;
+
+		//Switch statement for menu choice
+		switch (choice)
+
+		{
+			//Do/While loop to keep case 1 running while both integers are positive
+			do
+			{
+				//Get user input for integer one and integer two
+				case 1: cout << "Please enter two integers (press the enter key between each input):" << endl;
+					cin >> integerOne >> integerTwo;
+					cout << "\n" << endl;
+
+					//Calculate the integer total
+					integerTotal = integerOne + integerTwo;
+
+					//If/Else if statements to test if both integers are positive numbers
+					
+					//If integer one and integer two are postitive numbers
+					if ((integerOne >= 0) && (integerTwo >= 0))
+					{
+						cout << "You entered " << integerOne << " and " << integerTwo << endl;
+						cout << "Neither is negative" << endl;
+						cout << "Their total is " << integerTotal << endl;
+						cout << "\n" << endl;
+					}
+					//If integer one or integer two is a negative number
+					else if ((integerOne < 0) || (integerTwo < 0))
+					{
+						cout << "You entered " << integerOne << " and " << integerTwo << endl;
+						cout << "At least one is negative" << endl;
+						cout << "\n" << endl;
+					}
+			} while ((integerOne >= 0) && (integerTwo >= 0));
+			break;
+
+			//Do/While loop to keep case 2 running until the lower-case string "stop" is entered
+			do
+			{
+				//Get user input for string one and string two
+				case 2: cout << "Please enter two lower-case strings (press the enter key between each input):" << endl;
+					cin >> stringOne >> stringTwo;
+					cout << "\n" << endl;
+
+					//If/Else if statements to test alphabetic placement of strings per ASCII value, or if the lower-case string "stop" is entered
+					
+					//If string one or two are equal to the lower-case string "stop"
+					if ((stringOne == "stop") || (stringTwo == "stop"))
+					{
+							cout << "Program is over" << endl;
+							cout << "\n" << endl;
+					}
+					//If string one's ASCII value is less than string two's ASCII value
+					else if (stringOne < stringTwo)
+					{
+						cout << "'" << stringOne << "' comes before '" << stringTwo << "' alphabetically" << endl;
+						cout << "\n" << endl;
+					}
+					//If string two's ASCII value is less than string one's ASCII value
+					else if (stringTwo < stringOne)
+					{
+						cout << "'" << stringTwo << "' comes before '" << stringOne << "' alphabetically" << endl;
+						cout << "\n" << endl;
+					}
+			} while ((stringOne != "stop") && (stringTwo != "stop"));
+			break;
+
+				//Case 3 for menu choice 3
+				case 3: cout << "The program is over" << endl;
+				break;
+
+				//Default output if choice is not a valid menu choice
+				default: cout << "That is not a valid menu choice" << endl;
+					cout << "\n" << endl;
+				break;
+		}
+	}while (choice != 3);
+
+	//End the program
+	return 0;
+}
