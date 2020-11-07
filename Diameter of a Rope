@@ -1,0 +1,40 @@
+/*----------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date Due : September 20, 2020
+Description : This program will ask the user for the weight (in pounds) of a item needed to be lifted by a rope.
+The program will then caluculate the diameter of the rope needed to lift the items weight, and output the diameter
+of the rope needed to lift that item
+-----------------------------------------------------------------------------------------------------------------*/
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+
+	int usersWeight;
+	double pound, ton, usersWeightInTons, equationToSquareRoot, diameterOfRope;
+	const double PI = 3.14159;
+
+	//Explain the program to the user, prompt the user to input the value of the weight (in pounds), and allow the user to input the value of the weight
+
+	cout << "This program will ask the user for a weight of a item that is being lifted by a rope (in pounds), and then calculate the diameter of the rope needed to lift the item." << endl;
+	cout << "Please enter a weight (in pounds) of the item that is being lifted by the rope:" << endl;
+	cin >> usersWeight;
+
+	//Set the weight of a ton, convert the users inputted weight into tons, create the equation to square root, and calculate the diameter of the rope based on the formula 
+
+	pound = 1.0;
+	ton = 2000.0 * pound;
+	usersWeightInTons = usersWeight / ton;
+	equationToSquareRoot = 15 * usersWeightInTons;
+	diameterOfRope = sqrt(equationToSquareRoot) / PI;
+
+	//Output the users inputted weight and the diameter of the rope needed to hold the weight, and end the program
+
+	cout << "To lift " << usersWeight << " pounds, the rope's diamater should be " << setprecision(3) << fixed << diameterOfRope << " inches." << endl;
+	return 0;
+}
