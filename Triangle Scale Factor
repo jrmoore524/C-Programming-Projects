@@ -1,0 +1,73 @@
+/*------------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : October 27, 2020
+Description : This program will ask the user for the name of a text file to get input from. The first three values
+ in the text file will be the sides of a triangle, and the fourth value will be a interger scale factor. The program
+ will then output the values for the sides of the triangle and the value of the sides with the scale factor applied.
+ ------------------------------------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	//Set Windows System color (black background with green text)
+	system("color 02");
+
+	//Define variables
+	ifstream inputFile;
+	string fileName;
+	double number1{}, number2{}, number3{};
+	int scaleFactor{};
+
+	//Explain the program to the user and get the users input for the file name
+	cout << "This program will ask you for the name of a file to get input from. The text file will contain 3 numbers" << endl;
+	cout << "representing the sides of a triangle, and then a fourth number that represents the scale factor of the" << endl;
+	cout << "triangle. The program will then output the sides of the triangle and the values with the scale factor applied." << endl;
+	cout << "\n" << endl;
+
+	//Get the filename from the user
+	cout << "Please enter the name of the text file to get input from:" << endl;
+	cin >> fileName;
+	cout << "\n" << endl;
+
+	//Open the file
+	inputFile.open(fileName);
+
+	//If the file sucessfully opened, process the file and continue the program
+	if (inputFile)
+	{
+		//Read the four numbers from the input file
+		inputFile >> number1;
+		inputFile >> number2;
+		inputFile >> number3;
+		inputFile >> scaleFactor;
+
+		//Close the file
+		inputFile.close();
+
+		//Output the sides of the triangle
+		cout << "The original triangle sides were:" << endl;
+		cout << setprecision(3) << setw(9) << fixed << right << number1 << endl;
+		cout << setprecision(3) << setw(9) << fixed << right << number2 << endl;
+		cout << setprecision(3) << setw(9) << fixed << right << number3 << endl;
+		cout << "\n" << endl;
+
+		//Output the sides of the triangle with the scale factor applied
+		cout << "With a scale factor of " << scaleFactor << ", the new triangle sides are:" << endl;
+		cout << setprecision(3) << setw(9) << fixed << right << number1 * scaleFactor << endl;
+		cout << setprecision(3) << setw(9) << fixed << right << number2 * scaleFactor << endl;
+		cout << setprecision(3) << setw(9) << fixed << right << number3 * scaleFactor << endl;
+	}
+	else
+	{
+		//Display an error message if the file did not open correctly
+		cout << "Error opening the file." << endl;
+	}
+	//End the program
+	return 0;
+}
+
