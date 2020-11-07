@@ -1,0 +1,170 @@
+/*--------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : November 1, 2020
+Description :This program will determine which of five geographic regions within a major city
+(North, South, East, West, and Central) had the fewest reported automobile accidents last year,
+and save the accident data to a file named "lowestYearlyAccidents.txt.
+ --------------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <fstream>
+using namespace std;
+
+// Function prototypes
+int getNumAccidents(string);
+string findLowest(int, int, int, int, int);
+
+//Golbal Constants for region names (need to access the variables in function "main" and function "findLowest")
+const string NORTH = "North",			//To hold North region name
+			 SOUTH = "South",			//To hold South region name
+			 EAST = "East",				//To hold East region name
+			 WEST = "West",				//To hold West region name
+			 CENTRAL = "Central";		//To hold Central region name
+
+//Global variable (need to access the variable in function "main" and function "findLowest")
+string lowestRegion;			//To hold the region with the lowest yearly accidents
+
+int main()
+{
+	//Set Windows console system colors (Black background with green font) 
+	system("COLOR 02");
+
+	//File stream object
+	ofstream outputFile;
+
+	//Open the file for saving accident data
+	outputFile.open("lowestYearlyAccidents.txt");
+
+	//Explain the program to the user
+	cout << "This program will determine which of five geographic regions within a major city" << endl;
+	cout << "(North, South, East, West, and Central) had the lowest reported automobile accidents last year." << endl;
+	cout << "\n" << endl;
+
+	//Call the getNumAccidents function to get the number of yearly accidents for each region and save figures to file
+
+	//To hold North yearly accident total and save number of accidents to file
+	int northAccidents = getNumAccidents(NORTH);
+	outputFile << setprecision(2) << fixed << NORTH << " region yearly accidents: " << northAccidents << endl;
+
+	//To hold South yearly accident total and save number of accidents to file
+	int southAccidents = getNumAccidents(SOUTH);
+	outputFile << setprecision(2) << fixed << SOUTH << " region yearly accidents: " << southAccidents << endl;
+
+	//To hold East yearly accident total and save number of accidents to file
+	int eastAccidents = getNumAccidents(EAST);
+	outputFile << setprecision(2) << fixed << EAST << " region yearly accidents: " << eastAccidents << endl;
+
+	//To hold West yearly accident total and save number of accidents to file
+	int westAccidents = getNumAccidents(WEST);
+	outputFile << setprecision(2) << fixed << WEST << " region yearly accidents: " << westAccidents << endl;
+
+	//To hold Central yearly accident total and save number of accidents to file
+	int centralAccidents = getNumAccidents(CENTRAL);
+	outputFile << setprecision(2) << fixed << CENTRAL << " region yearly accidents: " << centralAccidents << endl;
+
+	//Call the findLowest function to determine which region had the lowest yearly accidents
+	//and save the lowest region to file
+	lowestRegion = findLowest(northAccidents, southAccidents, eastAccidents, westAccidents, centralAccidents);
+	outputFile << "Lowest yearly accidents : " << lowestRegion;
+	
+	//Close the file
+	outputFile.close();
+
+	//End the program
+	return 0;
+}
+
+/* ---------------------------------------------------------------------------------
+ Function : getNumAccidents
+ Receives : name of a region
+ Description : This function receives the name of a region and asks the user for the
+ number of automobile accidents reported in that region during the last year, it
+ validates the input, then returns it. It should be called once for each city region.
+ Returns : accidentsReported ( a double )
+ Preconditions : Do not accept accident numbers below 0
+ ----------------------------------------------------------------------------------*/
+
+int getNumAccidents(string region)
+{
+	//To hold the yearly accidents reported
+	int accidentsReported;
+
+	//Get the yearly accidents reported for each region
+	cout << "Please enter the number of accidents reported for the " << region << " region for the past year:" << endl;
+	cin >> accidentsReported;
+	cout << "\n" << endl;
+
+	//While loop to validate accidents reported are greater than 0
+	while (accidentsReported < 0)
+	{
+		cout << "Please enter an accident number greater than 0." << endl;
+		cin >> accidentsReported;
+		cout << "\n" << endl;
+	}
+
+	//Return the number of accidents reported
+	return accidentsReported;
+}
+
+/* --------------------------------------------------------------------------
+ Function : findLowest
+ Receives : the five accident totals
+ Description : This function receives all five accident totals, and determines which
+ is the smallest and prints the name of the region, along with its accident figure.
+ Returns : lowestRegion ( a string )
+ Preconditions : none
+ --------------------------------------------------------------------------*/
+
+string findLowest(int northAccidents, int southAccidents, int eastAccidents, int westAccidents, int centralAccidents)
+{
+	//To hold the lowest amount of accidents 
+	int lowestAccidents;
+
+	//King of the Mountain alghorithm to check which region had the lowest yealry accidents
+
+	//Set the lowest accidents to North (the King)
+	lowestAccidents = northAccidents;
+	lowestRegion = NORTH;
+
+	
+	if (southAccidents < lowestAccidents)
+	{
+		lowestAccidents = southAccidents;
+		lowestRegion = SOUTH;
+	}
+	if (eastAccidents < lowestAccidents)
+	{
+		lowestAccidents = eastAccidents;
+		lowestRegion = EAST;
+	}
+	if (westAccidents < lowestAccidents)
+	{
+		lowestAccidents = westAccidents;
+		lowestRegion = WEST;
+	}
+	if (centralAccidents < lowestAccidents)
+	{
+		lowestAccidents = centralAccidents;
+		lowestRegion = CENTRAL;
+	}
+	
+	//If statement to output region with the lowest yearly accidents
+	if (lowestAccidents)
+	{
+		
+		
+		
+		cout << "The region with the lowest yearly accidents for the past year was the " << lowestRegion << " region." << endl;
+		cout << "The yearly accidents for the " << lowestRegion << " region was " << setprecision(2) << fixed << lowestAccidents << " accidents." << endl;
+		cout << "\n" << endl;
+		cout << "The sales data has been saved to \"lowestYearlyAccidents.txt\"." << endl;
+
+		//Return the region with the lowest accidents for saving to file
+		return lowestRegion;
+
+		
+	}
+	cout << "\n" << endl;
+}
