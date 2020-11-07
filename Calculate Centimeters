@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+
+	float lengthInInches, centimeters, totalCentimeters;
+	
+	//Get the length in inches
+
+	cout << "Please enter a length in inches:" << endl;
+	cin >> lengthInInches;
+
+	//Calculate the total centimeters
+
+	totalCentimeters = lengthInInches * 2.54;
+
+	//Print the total length in centimeters
+
+	cout << lengthInInches << " inches = " << totalCentimeters << " centimeters" << endl;
+	return 0;
+}
