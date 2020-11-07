@@ -1,0 +1,82 @@
+/*------------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : October 27, 2020
+Description : This program is based on the game "The King of the Mountain". This program will ask the user for the
+name of a text file to get input from. The file will contain a unknown number of integers and the first number in the 
+file will be set to the king. The program will then print the numbers, one per line, after testing if the new number
+is larger than the king. The program will then tell the user which number is the largest out of all the numbers in the
+file (the king of the mountain).
+ ------------------------------------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Set Windows System color (black background with green text)
+	system("color 02");
+
+	//Define variables
+	ifstream inputFile;
+	string fileName;
+	int number, king{};
+
+	//Explain the program to the user and get the name of the text file being used
+	cout << "This program is based on the game \"The King of the Mountain\".This program will ask the user for the name of a" << endl;
+	cout << "text file to get input from.The file will contain a unknown number of integers, and the first number in the file" << endl;
+	cout << "will be set to the king.The program will then print the numbers, one per line, after testing if the new number" << endl;
+	cout << "is larger than the king. The program will then tell the user which number is the largest out of all the numbers" << endl;
+	cout << "in the file (the king of the mountain)." << endl;
+	cout << "\n" << endl;
+
+	//Get the filename from the user
+	cout << "Please enter the name of the text file to get input from:" << endl;
+	cin >> fileName;
+	cout << "\n" << endl;
+
+	//Open the file the user has chosen
+	inputFile.open(fileName);
+
+	//If the file sucessfully opened, process the file and continue the program
+	if (inputFile)
+	{
+		//Get the first number from the file and set it to the king
+		inputFile >> king;
+
+		//Output the first number (king) in the file
+		cout << king << endl;
+
+		//While loop to keep getting the numbers in the file until the end of the file is reached
+		while (! inputFile.eof())
+		{
+			//Get the next number in the file
+			inputFile >> number;
+
+			//Test to see if the new number from the file is larger than the king number. If it is, replace the king with the new number
+			if (number > king)
+				king = number;
+
+			//Output the numbers from the file
+			cout << number << endl;
+		}
+		cout << "\n" << endl;
+
+		//Close the file
+		inputFile.close();
+
+		//Output the largest number (king) in the file
+		cout << "The largest number (king of the mountain) is: " << king << "." << endl;
+	}
+	else
+	{
+		//Display an error message if the file did not open correctly
+		cout << "Error opening the file." << endl;
+	}
+	//End the program
+	return 0;
+}
+
+
+
