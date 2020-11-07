@@ -1,0 +1,142 @@
+/*-------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date Due : October 4, 2020
+Description : This program will be a menu-driven program for a swimming pool service company.
+The program will calculate the price charged to the customer based on the users inputted values
+for customer level, type of service, and any discounts that may be applied, and output the results for the user.
+--------------------------------------------------------------------------------------------------------------*/
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define Variables
+	int	customerLevel;
+	char typeOfService;
+	double companyCost{}, priceToCustomer, discount;
+	const int OCCASIONAL = 1, MONTHLY = 2, YEARLY = 3;
+	bool valid = true;
+
+	//Explain the program to the user, display a menu clearly for the user, and prompt the user to input the type of shipment
+	cout << "This program will ask you for the customer level, type of service, and company cost, and output the price per customer for pool service" << endl;
+
+	//Display the customer level for the user and prompt the user to choose the customer level
+	cout << "\n" << endl;
+	cout << "Please choose the customer level (enter 1, 2, or 3) :" << endl;
+	cout << "\t Customer Level" << endl;
+	cout << "\t 1. Occasional " << endl;
+	cout << "\t 2. Monthly" << endl;
+	cout << "\t 3. Yearly" << endl;
+	cin >> customerLevel;
+
+	//Flag for valid customer level
+	if ((customerLevel != 1) && (customerLevel != 2) && (customerLevel != 3))
+		valid = false;
+	
+	//If customer level is valid
+	if ((customerLevel == 1) || (customerLevel == 2 ) || (customerLevel == 3))
+	{
+		//Prompt the user for the type of service and allow the user to input
+		cout << "What is the type of service (enter N for Normal, enter D for Deluxe) :" << endl;
+		cin >> typeOfService;
+			
+		//Flag for type of service
+		if ((typeOfService != 'N') && (typeOfService != 'D'))
+			valid = false;
+
+		//If type of service is valid
+		if ((typeOfService == 'N') || (typeOfService == 'D'))
+		{
+			//Prompt the user for the company cost and allow the user to input
+			cout << "What is the company cost? :" << endl;
+			cin >> companyCost;
+		}
+		
+	}
+	//If/ElseIf statements for customer types 1, 2, and 3,. Type of service included in boolean expressions
+	if ((customerLevel == 1) && (typeOfService == 'N'))
+	{
+		//Calculate price to customer based on customer level, service type, and company cost
+		priceToCustomer = companyCost * 1.8;
+	}
+	else if ((customerLevel == 1) && (typeOfService == 'D'))
+	{
+		//Calculate price to customer based on customer level, service type, and company cost
+		priceToCustomer = companyCost * 2.5;
+	}
+	else if ((customerLevel == 2) && (typeOfService == 'N'))
+	{
+		//Calculate price to customer based on customer level, service type, and company cost
+		priceToCustomer = companyCost * 1.5;
+	}
+	else if ((customerLevel == 2) && (typeOfService == 'D'))
+	{
+		//Calculate price to customer based on customer level, service type, and company cost
+		priceToCustomer = companyCost * 2.0;
+	}
+	else if ((customerLevel == 3) && (typeOfService == 'N'))
+	{
+		//Calculate price to customer based on customer level, service type, and company cost
+		priceToCustomer = (companyCost * 1.25);
+		discount = priceToCustomer * 0.10;
+		priceToCustomer -= discount;
+	}
+	else if ((customerLevel == 3) && (typeOfService == 'D'))
+	{
+		//Calculate price to customer based on customer level, service type, and company cost, and any discount applied
+		priceToCustomer = (companyCost * 1.5);
+		discount = priceToCustomer * 0.10;
+		priceToCustomer -= discount;
+	}
+	if ((valid) && (customerLevel == 1) && (typeOfService == 'N'))	//If parameters were met for occasional customers and normal service, output inputted values and price to customer
+	{
+		cout << "\n" << endl;
+		cout << setw(18) << left << "Customer level" << setw(2) << ":" << "Occasional" << endl;
+		cout << setw(18) << setprecision(3) << fixed << "Service type" << setw(2) << ":" << "Normal" << endl;
+		cout << setw(18) << setprecision(2) << fixed << "Price to Customer" << ":" << " $" << priceToCustomer << endl;
+	}
+	else if ((valid) && (customerLevel == 1) && (typeOfService == 'D'))	//If parameters were met for occasional customers and deluxe service, output inputted values and price to customer
+	{
+		cout << "\n" << endl;
+		cout << setw(18) << left << "Customer level" << setw(2) << ":" << "Occasional" << endl;
+		cout << setw(18) << setprecision(3) << fixed << "Service type" << setw(2) << ":" << "Deluxe" << endl;
+		cout << setw(18) << setprecision(2) << fixed << "Price to Customer" << ":" << " $" << priceToCustomer << endl;
+	}
+	else if ((valid) && (customerLevel == 2) && (typeOfService == 'N'))	//If parameters were met for monthly customers and normal service, output inputted values and price to customer
+	{
+		cout << "\n" << endl;
+		cout << setw(18) << left << "Customer level" << setw(2) << ":" << "Monthly" << endl;
+		cout << setw(18) << setprecision(3) << fixed << "Service type" << setw(2) << ":" << "Normal" << endl;
+		cout << setw(18) << setprecision(2) << fixed << "Price to Customer" << ":" << " $" << priceToCustomer << endl;
+	}
+	else if ((valid) && (customerLevel == 2) && (typeOfService == 'D'))	//If parameters were met for monthly customers and deluxe service, output inputted values and price to customer
+	{
+		cout << "\n" << endl;
+		cout << setw(18) << left << "Customer level" << setw(2) << ":" << "Monthly" << endl;
+		cout << setw(18) << setprecision(3) << fixed << "Service type" << setw(2) << ":" << "" << endl;
+		cout << setw(18) << setprecision(3) << fixed << "Service type" << setw(2) << ":" << "Deluxe" << endl;
+		cout << setw(18) << setprecision(2) << fixed << "Price to Customer" << ":" << " $" << priceToCustomer << endl;
+	}
+	else if ((valid) && (customerLevel == 3) && (typeOfService == 'N'))	//If parameters were met for yearly customers and normal service, output inputted values and price to customer
+	{
+		cout << "\n" << endl;
+		cout << setw(18) << left << "Customer level" << setw(2) << ":" << "Yearly" << endl;
+		cout << setw(18) << setprecision(3) << fixed << "Service type" << setw(2) << ":" << "Normal" << endl;
+		cout << setw(18) << left << "Discount" << setw(2) << ":" << "10%" << endl;
+		cout << setw(18) << setprecision(2) << fixed << "Price to Customer" << ":" << " $" << priceToCustomer << endl;
+	}
+	else if ((valid) && (customerLevel == 3) && (typeOfService == 'D'))	//If parameters were met for yearly customers and deluxe service, output inputted values and price to customer
+	{
+		cout << "\n" << endl;
+		cout << setw(18) << left << "Customer level" << setw(2) << ":" << "Yearly" << endl;
+		cout << setw(18) << setprecision(3) << fixed << "Service type" << setw(2) << ":" << "Deluxe" << endl;
+		cout << setw(18) << left << "Discount" << setw(2) << ":" << "10%" << endl;
+		cout << setw(18) << setprecision(2) << fixed << "Price to Customer" << ":" << " $" << priceToCustomer << endl;
+	}
+	else
+		cout << "There was invalid input. Please try again." << endl;	//Output if invalid parameters are met
+	return 0;
+}
+
