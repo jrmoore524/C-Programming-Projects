@@ -4,7 +4,7 @@ Date Due : September 27, 2020
 Description : This program will ask the user three values a, b, and c (in that order)
 representing the sides of a right triangle, and prompt the user to input the three values.
 The program will then tell the user whether or not the sides form a right triangle.
-------------------------------------------------------------------------------------------*/
+----------------------------------------------------------------------------------------*/
 #include <iostream>
 #include <cmath>
 #include <string>
