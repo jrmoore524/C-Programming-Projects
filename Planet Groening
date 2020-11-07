@@ -1,0 +1,164 @@
+/* -----------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : October 11, 2020
+Description : This program will be a menu driven program based on the planet Groening. It will ask the user
+for the number of days or weeks in a month (depending on menu choice), then print the names of the months that
+have that number of days or weeks, and also how many days or weeks are in each of the months. 
+ ---------------------------------------------------------------------------------------------------------- */
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+	int choice, daysInMonth, weeksInMonth;
+	const int DAYS_IN_HOMER = 16,
+			  DAYS_IN_MARGE = 20,
+			  DAYS_IN_BART = 18,
+			  DAYS_IN_LISA = 24,
+			  DAYS_IN_MAGGIE = 16,
+			  DAYS_IN_BURNS = 18,
+			  DAYS_IN_MOE = 24,
+			  DAYS_IN_SMITHERS = 20,
+			  WEEKS__IN_HOMER = 4,
+			  WEEKS__IN_MARGE = 5,
+			  WEEKS_IN_BART = 3,
+			  WEEKS_IN_LISA = 4,
+			  WEEKS_IN_MAGGIE = 2,
+			  WEEKS_IN_BURNS = 6,
+			  WEEKS_IN_MOE = 6,
+			  WEEKS_IN_SMITHERS = 4;
+
+	//Explain the program to the user and show the menu options, and prompt the user to make a menu choice
+	cout << "This program will ask the user for the number of days in a month or the number of weeks" << endl;
+	cout << "in a month on the planet Groening depending on your choice, and then print the names of the months" << endl;
+	cout << "that have that number of days or number of weeks, and how many days or weeks are in each" << endl;
+	cout <<	"month, depending on your original choice." << endl;
+	cout << "\n" << endl;
+
+	//Do/While loop to keep displaying menu when program is restarted
+	do
+	{
+		//Output the menu
+		cout << "Menu" << endl;
+		cout << "====" << endl;
+		cout << "1. Enter number of days in the month" << endl;
+		cout << "2. Enter number of weeks in the month" << endl;
+		cout << "3. Exit" << endl;
+		cout << "\n" << endl;
+
+		cout << "Enter your choice:" << endl;
+		cin >> choice;
+
+		//Do/While loop to restart program until choice 3 is made
+		do
+		{
+			//Switch statement for menu choice
+			switch (choice)
+			{
+
+				//Case 1 for menu choice 1
+
+				//Get the users input for number of days in the month
+				case 1: cout << "How many days are in the month:" << endl;
+					cin >> daysInMonth;
+
+					//Switch statements for inputted value of daysInMonth
+					switch (daysInMonth)
+					{
+						//If days in month are 16
+						case 16: cout << "The months that have that amount of days are Homer and Maggie." << endl;
+							cout << "The month of Homer has " << WEEKS__IN_HOMER << " weeks, and the month of Maggie has " << WEEKS_IN_MAGGIE << " weeks." << endl;
+							cout << "\n" << endl;
+							break;
+
+						//If days in month are 18
+						case 18:cout << "The months that have that amount of days are Bart and Burns." << endl;
+							cout << "The month of Bart has " << WEEKS_IN_BART << " weeks, and the month of Burns has " << WEEKS_IN_BURNS << " weeks." << endl;
+							cout << "\n" << endl;
+							break;
+
+						//If days in month are 20
+						case 20:cout << "The months that have that amount of days are Marge and Smithers." << endl;
+							cout << "The month of Marge has " << WEEKS__IN_MARGE << " weeks, and the month of Smithers has " << WEEKS_IN_SMITHERS << " weeks." << endl;
+							cout << "\n" << endl;
+							break;
+
+						//If days in month are 24
+						case 24:cout << "The months that have that amount of days are Lisa and Moe." << endl;
+							cout << "The month of Lisa has " << WEEKS_IN_LISA << " weeks, and the month of Moe has " << WEEKS_IN_MOE << " weeks." << endl;
+							cout << "\n" << endl;
+							break;
+
+						//If days in month are not a valid amount
+						default: cout << "There is not a month on the planet Groening that has that amount of days." << endl;
+							cout << "\n" << endl;
+							break;
+					}
+				break;
+
+				//Case 2 for menu choice 2
+
+				//Get the users input for number of weeks in the month
+				case 2: cout << "How many weeks are in the month:" << endl;
+					cin >> weeksInMonth;
+
+					//Switch statements for inputted value for weeksInMonth
+					switch (weeksInMonth)
+					{
+						//If weeks in month is 2
+						case 2: cout << "The month that has that amount of weeks is Maggie." << endl;
+							cout << "The month of Maggie has " << DAYS_IN_MAGGIE << " days." << endl;
+							cout << "\n" << endl;
+							break;
+						
+						//If weeks in month is 3
+						case 3: cout << "The month that has that amount of weeks is Bart." << endl;
+							cout << "The month of Bart has " << DAYS_IN_BART << " days." << endl;
+							cout << "\n" << endl;
+							break;
+						
+						//If weeks in month is 4
+						case 4: cout << "The months that have that amount of weeks are Homer, Lisa, and Smithers." << endl;
+							cout << "The month of Homer has " << DAYS_IN_HOMER << " days, the month of Lisa has " << DAYS_IN_LISA << " days, and the";
+							cout << " month of Smithers has " << DAYS_IN_SMITHERS << " days." << endl;
+							cout << "\n" << endl;
+							break;
+						
+						//If weeks in month is 5
+						case 5: cout << "The month that has that amount of weeks is Marge." << endl;
+							cout << "The month of Marge has " << DAYS_IN_MARGE << " days." << endl;
+							cout << "\n" << endl;
+							break;
+						
+							//If weeks in month is 6
+						case 6: cout << "The months that have that amount of weeks are Burns and Moe." << endl;
+							cout << "The month of Burns has " << DAYS_IN_BURNS << " days, the month of Moe has " << DAYS_IN_MOE << " days." << endl;
+							cout << "\n" << endl;
+							break;
+
+						//If weeks in month is not a valid amount
+						default: cout << "There is not a month on the planet Groening that has that amount of weeks." << endl;
+							cout << "\n" << endl;
+							break;
+					}
+					break;
+
+				//Case 3 for menu choice 3
+				case 3: cout << "The program is over." << endl;
+					break;
+				
+				//Default case if not a valid menu choice
+				default: cout << "That is not a valid menu choice." << endl;
+					cout << "\n" << endl;
+			}
+			break;
+		} while (choice != 3);
+	} while (choice != 3);
+
+	//End the program
+	return 0;
+}
+
