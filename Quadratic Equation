@@ -1,0 +1,43 @@
+/*--------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date Due : September 20, 2020
+Description : This program will ask the user for three numbers (all doubles) based on a quadratic equation
+in the form of ax(squared) + bx + c = 0,and let the user input the values. The program will then solve the
+equation using the users inputted values and output the values and solutions (there will be 2 solutions)
+---------------------------------------------------------------------------------------------------------*/
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+
+	double a, b, c, equationToSquareRoot, solution1, solution2;
+	
+	//Explain the program to the user, prompt the user to enter values for a,b, and c, and allow the user to input the values
+
+	cout << "This program will ask you for 3 double values representing a, b, and c, and then calculate the result using the quadratic formula ax(squared) + bx + c = 0." << endl;
+	cout << "Please enter a value for a, and make sure it has a decimal point with no more than 1 decimal place:" << endl;
+	cin >> a;
+	cout << "Please enter a value for b, and make sure it has a decimal point with no more than 1 decimal place:" << endl;
+	cin >> b;
+	cout << "Please enter a value for c, and make sure it has a decimal point with no more than 1 decimal place:" << endl;
+	cin >> c;
+
+	//Calculate the two solutions using the users inputted values for a, b, and c based on the quadratic formula of ax(squared) + bx + c = 0
+
+	equationToSquareRoot = pow(b, 2) - (4.0 * a * c);
+	solution1 = ((-1.0 * b) - (sqrt(equationToSquareRoot))) / (2.0 * a);
+	solution2 = ((-1.0 * b) + (sqrt(equationToSquareRoot))) / (2.0 * a);
+
+	//Output the inputted values of a, b, c and the two solutions, and end the program
+
+	cout << "a = " << setprecision(1) << fixed << a << endl;
+	cout << "b = " << setprecision(1) << fixed << b << endl;
+	cout << "c = " << setprecision(1) << fixed << c << endl;
+	cout << "Solutions : " << setprecision(5) << fixed << solution1 << " and " << solution2 << endl; 
+	return 0;
+}
