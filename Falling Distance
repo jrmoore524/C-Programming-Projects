@@ -1,0 +1,72 @@
+/*-----------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : November 1, 2020
+Description :This program will calculuate how far a item has fallen (in meters) over 
+the amount of time that the object has fallen (1-10 seconds)
+ ----------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <cmath>
+using namespace std;
+
+//Function prototype
+double fallingDistance(int);
+
+int main()
+{
+	//Set Windows console system colors (Black background with green font) 
+	system("COLOR 02");
+
+	//To hold the distance the object has fell
+	double distanceFell;
+
+	//Explain the program to the user
+	cout << "This program will calculuate how far a item has fallen (in meters)" << endl;
+	cout << "over the amount of time that the object has fallen (1 - 10 seconds)." << endl;
+	cout << "\n" << endl;
+
+	//For loop to iterate thought the seconds (1-10) of the falling time
+	for (int count = 1; count <= 10; count++)
+	{
+		//If statement to output "second" instead of "seconds" on second number 1
+		if (count == 1)
+		{
+			distanceFell = fallingDistance(count);
+			cout << "The distance in meters the item fell in " << count << " second is " << setprecision(2) << fixed << distanceFell << " meters." << endl;
+		}
+		//Else to output "seconds" on seconds 2-10
+		else
+		{
+			//Set the distance fell to the returned value from fallingDistance function and output the distance the item has fallen during that time
+			distanceFell = fallingDistance(count);
+			cout << "The distance in meters the item fell in " << count << " seconds is " << setprecision(2) << fixed << distanceFell << " meters." << endl;
+		}
+	}
+	//End the program
+	return 0;
+}
+
+/* ---------------------------------------------------------------------------------
+ Function : falllingDistance
+ Receives : falling time
+ Description : This function receives the falling time of the object and calculates
+ the meters the item has fallen in that amount of time
+ Returns : distance ( a double )
+ Preconditions : 
+ ----------------------------------------------------------------------------------*/
+double fallingDistance(int time)
+{
+	//To hold the distance item has fallen
+	double distance;
+
+	//To hold the acceleration of gravity
+	double gravity = 9.8;
+
+	//Formaula for calcualating distance fallen per second
+	distance = .5 * gravity * pow(time, 2.0);
+
+	//Return the distance the item has fallen
+	return distance;
+}
