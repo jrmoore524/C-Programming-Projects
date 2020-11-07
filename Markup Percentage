@@ -1,0 +1,79 @@
+/*----------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : November 1, 2020
+Description : This program will ask the user for the wholesale cost of an item and the markup
+percentage of that item. The program will then calculate the retail cost of the item.
+ ---------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//Fuction Prototype
+double calculateRetail(double, double);
+
+int main()
+{
+	//Set Windows console system colors (Black background with green font) 
+	system("COLOR 02");
+
+	double wholesaleCost;		//Wholesale cost
+	double markupPercentage;	//Markup percentage
+	double retailPrice;			//Retail price
+
+	//Explain the program to the user and get the input for the wholesale cost and markup percentage
+	cout << "This program will ask you for the wholesale cost of and item and its markup percentage," << endl;
+	cout << "and then calculate its retail price." << endl;
+	cout << "\n" << endl;
+
+	//Get the items wholesale cost
+	cout << "Please enter the item's wholesale cost: " << endl;
+	cin >> wholesaleCost;
+	cout << "\n" << endl;
+
+	//Validate the wholsale cost
+	while (wholesaleCost < 0)
+	{
+		cout << "Please enter a non-negative value: " << endl;
+		cin >> wholesaleCost;
+		cout << "\n" << endl;
+	}
+
+	//Get the item's markup percentage 
+	cout << "Please enter the item's markup percentage: " << endl;
+	cin >> markupPercentage;
+	cout << "\n" << endl;
+
+	//Validate the markup percentage 
+	while (markupPercentage < 0)
+	{
+		cout << "Please enter a non-negative value: " << endl;
+		cin >> markupPercentage;
+		cout << "\n" << endl;
+	}
+
+	//Calculate the item's retail price
+	retailPrice = calculateRetail(wholesaleCost, markupPercentage);
+
+	//Display the retail price
+	cout << "The retail price is $" << setprecision(2) << fixed << retailPrice << endl;
+	cout << "\n" << endl;
+
+	//End the program
+	return 0;
+}
+
+/* ----------------------------------------------------------------------
+ Function : calculateRetail
+ Receives : 2 doubles
+ Description : This function accepts an item's wholesale cost and
+ markup percentage as arguments, and returns the items retail price
+ Returns : retailPrice (a double)
+ Preconditions : validate values for wholesale cost and markup percentage
+ ----------------------------------------------------------------------*/
+
+double calculateRetail(double wholesaleCost, double markupPercentage)
+{
+	double markup = wholesaleCost * markupPercentage / 100;
+	return wholesaleCost + markup;
+}
