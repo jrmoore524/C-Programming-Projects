@@ -1,0 +1,53 @@
+/*--------------------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date Due : September 23, 2020
+Description : This program will calculate the performance of a investment. It will ask the user for the amount of principal,
+the interest rate as a percent (like 1.2), the number of times interest is compounded per year, and the number of years that
+the investment will last, and let the user input the values. It will then caluculate the ending balance, and the amount of
+interest paid over the years of the inventment, and output the amounts
+--------------------------------------------------------------------------------------------------------------------------*/
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+
+	int compoundedTimesYearly, yearsOfInvestment, totalTimesCompounded;
+	double principal, interestRate, monthlyInterest, endingBalance, totalInterest;
+
+	/*Explain the program to the user, prompt the user to input the values for the principal, interest rate, the number of times interest is compounded per year,
+	and the number of years the investment will last, and allow the user to input the values
+	*/
+
+	cout << "This program will calculate the performance of a investment based on principal, interest rate, compounding, and years of the investment." << endl;
+	cout << "Please enter the principal amount of the investment:" << endl;
+	cin >> principal;
+	cout << "Please enter the interest rate of the investment (as a percent like 1.2):" << endl;
+	cin >> interestRate;
+	cout << "Please enter the number of times the investment will compound each year:" << endl;
+	cin >> compoundedTimesYearly;
+	cout << "Please enter the number of years that the investment will last:" << endl;
+	cin >> yearsOfInvestment;
+
+	//Calculate the performance of the investment based on the users inputted values
+
+	interestRate /= 100;
+	totalTimesCompounded = compoundedTimesYearly * yearsOfInvestment;
+	monthlyInterest = 1 + interestRate / compoundedTimesYearly;
+	endingBalance = principal * pow(monthlyInterest, totalTimesCompounded);
+	totalInterest = endingBalance - principal;
+
+	//Output the values inputted by the user including the ending balance and total amount of interest, and end the program
+
+	cout << setw(27) << setprecision(2) << fixed << "Principal : " << "$" << principal << endl;
+	cout << setw(27) << setprecision(3) << fixed << "Interest rate : " << interestRate * 100 << "%" << endl;
+	cout << setw(27) << "Compounding times yearly : " << compoundedTimesYearly << endl;
+	cout << setw(27) << "Years : " << yearsOfInvestment << endl;
+	cout << setw(27) << setprecision(2) << fixed << "Ending balance : " << "$" << endingBalance << endl;
+	cout << setw(27) << "Amount of interest : " << "$" << totalInterest << endl;
+	return 0;
+}
