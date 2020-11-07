@@ -1,0 +1,61 @@
+/*------------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : October 27, 2020
+Description : This program will ask the user for the name of a text file to get input from. The file will contain one
+string with at least 6 words. The program will then read the first five words from the file, and then save them to a 
+second file named "words.txt".
+ ------------------------------------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Set Windows System color (black background with green text)
+	system("color 02");
+
+	//Define variables
+	ifstream inputFile;
+	ofstream outputFile;
+	int count = 1;
+	string word, fileName;
+
+	//Explain the program to the user, and get the name of the text file being used
+	cout << "This program will ask you for the name of a file that contains a string of at least 6 words. The program" << endl;
+	cout << "will get the first 5 words from the file, and then save them to a second file named \"words.txt\"." << endl;
+	cout << "\n" << endl;
+
+	//Get the filename from the user
+	cout << "Please enter the name of the text file to get input from:" << endl;
+	cin >> fileName;
+	cout << "\n" << endl;
+
+	//Open the file the user has chosen
+	inputFile.open(fileName);
+
+	//Create the new text file
+	outputFile.open("words.txt");
+
+	//If the file sucessfully opened, process the file and continue the program
+	if (inputFile)
+	{
+		//Read the first five words from the input file and save them to the new text file
+		for (count; count <= 5; count++)
+		{
+			inputFile >> word;
+			outputFile << word << endl;
+		}
+		//Close the files
+		inputFile.close();
+		outputFile.close();
+	}
+	else
+	{
+		//Display an error message if the file did not open correctly
+		cout << "Error opening the file." << endl;
+	}
+	//End the program
+	return 0;
+}
