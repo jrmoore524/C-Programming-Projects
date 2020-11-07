@@ -1,0 +1,32 @@
+/*----------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : October 18, 2020
+Description : This program will ask for 7 integers, and then print their total
+ ---------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+	int number, count, total = 0;
+
+	//Explain the program to the user and get the input for 7 integers
+	cout << "This program will ask for 7 integers, and then print their total." << endl;
+	cout << "Please enter 7 integers (press enter between each number): " << endl;
+	
+	//For loop to get 7 integers and keep running total
+	for (count = 1; count <= 7; count++)
+	{
+		cin >> number;
+		total += number;
+	}
+
+	//Output the total of the 7 integers
+	cout << "The total of your numbers is " << total << endl;
+
+	//End the program
+	return 0;
+}
