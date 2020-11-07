@@ -1,0 +1,42 @@
+/*--------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date Due : September 20, 2020
+Description : This program will ask the user for the length and the width values of a rectangle (both doubles),
+calculate the diagonal from the users inputs, and output the length, width, and diagonal values of the rectangle
+---------------------------------------------------------------------------------------------------------------*/
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+
+	double lengthOfRectangle, widthOfRectangle, diagonalOfRectangle, square1, square2,  addingSquares, squareRoot;
+	string length = "length", width = "width", diagonal = "diagonal";
+	char equalsSign = '=';
+
+	//Explain the program to the user, prompt the user to input the length and width of a rectangle, and allow the user to input the length and width
+
+	cout << "This program will ask you for two double values, the length and the width of a rectangle, and then calculate the diagonal of the rectangle." << endl;
+	cout << "Please enter the length of the rectangle, and make sure it has a decimal point with no more than 2 decimal places:" << endl;
+	cin >> lengthOfRectangle;
+	cout << "Please enter the width of the rectangle, and make sure it has a decimal point with no more than 2 decimal places:" << endl;
+	cin >> widthOfRectangle;
+
+	//Calculate the diagonal of a rectangle using the users length and width inputted values
+
+	square1 = pow(lengthOfRectangle, 2);
+	square2 = pow(widthOfRectangle, 2);
+	addingSquares = square1 + square2;
+	diagonalOfRectangle = sqrt(addingSquares);
+
+	//Output the length, width, and diagonal of the rectangle, and end the program
+
+	cout << setw(9) << left << length << setw(2) << equalsSign << setw(7) << setprecision(2) << fixed << lengthOfRectangle << endl;
+	cout << setw(9) << width << setw(2) << equalsSign << setw(7) << setprecision(2) << fixed << widthOfRectangle << endl;
+	cout << setw(9) << diagonal << setw(2) << equalsSign << setw(7) << setprecision(4) << fixed << diagonalOfRectangle << endl;
+	return 0;
+}
