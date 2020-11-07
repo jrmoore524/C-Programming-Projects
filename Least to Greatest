@@ -1,0 +1,55 @@
+/*----------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date Due : September 27, 2020
+Description : This program will ask the user for three values and prompt the user to input the values.
+The program will then print the values in order from least to greatest.
+----------------------------------------------------------------------------------------------------*/
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    //Define variables
+
+    int num1, num2, num3;
+    
+
+    //Explain the program to the user, prompt the user to input three values, and allow the user to input the values
+
+    cout << "This program will ask you for three numbers, and then print the values in order from smallest to largest." << endl;
+    cout << "Please enter the value for the first number:" << endl;
+    cin >> num1;
+    cout << "Please enter the value for the second number:" << endl;
+    cin >> num2;
+    cout << "Please enter the value for the third number:" << endl;
+    cin >> num3;
+
+    //Use IF statement to determine the order of the values from least to greatest and output the values
+   if (num1 <= num2)
+       if (num2 < num3)
+           cout << "In order, your numbers were " << num1 << ", " << num2 << ", and " << num3 << endl;
+    if (num1 < num2)
+        if (num3 <= num2)
+            cout << "In order, your numbers were " << num1 << ", " << num3 << ", and " << num2 << endl;
+    if (num2 < num1)
+        if (num1 <= num3)
+            cout << "In order, your numbers were " << num2 << ", " << num1 << ", and " << num3 << endl;
+    if (num2 < num3)
+        if (num3 < num1)
+            cout << "In order, your numbers were " << num2 << ", " << num3 << ", and " << num1 << endl;
+    if (num3 < num1)
+        if (num1 < num2)
+            cout << "In order, your numbers were " << num3 << ", " << num1 << ", and " << num2 << endl;
+    if (num3 <= num2)
+        if (num2 < num1)
+            cout << "In order, your numbers were " << num3 << ", " << num2 << ", and " << num1 << endl;
+
+    // Add IF statement to determine if all 3 numbers entered are the same number, and end the program
+
+    if (num1 == num2)                                                                                    
+        if (num2 == num3)
+            cout << "In order, your numbers were " << num1 << ", " << num2 << ", and " << num3 << endl;
+    return 0;
+}
+	
