@@ -1,0 +1,43 @@
+/*-------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : October 18, 2020
+Description : This program will ask the user for a number, and then print the first 10 multiples of that number
+ -------------------------------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variabless
+	int number, count, multipleValue;
+
+	//Explain the program to the user and get the users input for number
+	cout << "This program will ask you for a number, and then print out the first 10 multiples of that number." << endl;
+	cout << "\n" << endl;
+
+	cout << "Please enter a number:" << endl;
+	cin >> number;
+	cout << "\n" << endl;
+
+
+	//Output num and the first 10 multiples of number
+	cout << "The first 10 multiples of " << number << " are : ";
+
+	//For loop to output the first 10 multiple of the number
+	for (count = 1; count <= 10; count++)
+	{
+		multipleValue = number * count;
+		if (count <= 9)
+		{
+			cout << multipleValue << ", ";
+		}
+		if (count == 10)
+			cout << "and " << multipleValue;
+	}
+	cout << "\n" << endl;
+
+	//End the program
+	return 0;
+}
