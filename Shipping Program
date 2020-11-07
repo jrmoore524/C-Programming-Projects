@@ -1,0 +1,135 @@
+/*-----------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date Due : October 4, 2020
+Description : This program will be a menu-driven program for a shipping company. The program will calculate
+the cost of the shipment based on the users inputted values for the shipment type, weight of package, and the
+distance that package is being shipped, and output the results for the user.
+------------------------------------------------------------------------------------------------------------*/
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define Variables
+	int shipmentType, distanceShipped{};
+	double packageWeight, rate, cost;
+	const int NORMAL = 1, EXPEDITED = 2;
+	bool valid = true;
+
+	//Explain the program to the user, display a menu clearly for the user, and prompt the user to input the type of shipment
+	cout << "This program will ask you for the type of shipment that you will be using to ship a package (normal or expedited), " << endl;
+	cout << "the weight of the package that you will be shipping, and the distance the package will be going, and output what " << endl;
+	cout << "it will cost you to ship the package." << endl;
+
+	//Display the type of shipment menu for the user and prompt the user to chose the type of shipment
+	cout << "\n" << endl;
+	cout << "Please choose the type of shipment for your package (enter 1 or 2) :" << endl;
+	cout << "\t Type of Shipment" << endl;
+	cout << "\t 1. Normal" << endl;
+	cout << "\t 2. Expedited" << endl;
+	cin >> shipmentType;
+
+	//Flag for valid shipment type
+	if ((shipmentType != 1) && (shipmentType != 2))
+		valid = false;
+
+	//IF shipment type is valid
+	if ((shipmentType == 1) || (shipmentType == 2))
+	{
+		//Prompt the user for the weight and allow the user to input
+		cout << "What is the weight of the package?" << endl;
+		cin >> packageWeight;
+
+		//Flag for weight 0 or less
+		if (packageWeight <= 0)
+			valid = false;
+
+		//If package weight is valid
+		if (packageWeight > 0)
+		{
+			//Prompt the user for the distance being shipped
+			cout << "What is the distance that the packing will shipping?" << endl;
+			cin >> distanceShipped;
+		}
+	}
+	//If/ElseIf statements for shipment type 1 and 2. MIN/MAX distances included in boolean expressions
+	if ((shipmentType == 1) && (packageWeight <= 1) && (distanceShipped >= 15) && (distanceShipped <= 900))
+	{
+		//Calculate cost based on shipment type, package weight, rate, and distance shipped and 
+		rate = 2.03;
+		rate /= 100;
+		cost = distanceShipped * rate;
+	}
+	else if ((shipmentType == 1) && (packageWeight <= 1) && (packageWeight < 4.0) && (distanceShipped >= 15) && (distanceShipped <= 900))
+	{
+		//Calculate cost based on shipment type, package weight, rate, and distance shipped and 
+		rate = 3.95;
+		rate /= 100;
+		cost = distanceShipped * rate;
+	}
+	else if ((shipmentType == 1) && (packageWeight >= 4.0) && (packageWeight < 10.0) && (distanceShipped >= 15) && (distanceShipped <= 900))
+	{
+		//Calculate cost based on shipment type, package weight, rate, and distance shipped 
+		rate = 6.57;
+		rate /= 100;
+		cost = distanceShipped * rate;
+	}
+	else if ((shipmentType == 1) && (packageWeight >= 10.0) && (distanceShipped >= 15) && (distanceShipped <= 900))
+	{
+		//Calculate cost based on shipment type, package weight, rate, and distance shipped 
+		rate = 8.26;
+		rate /= 100;
+		cost = distanceShipped * rate;
+	}
+	else if ((shipmentType == 2) && (packageWeight <= 1.0) && (distanceShipped >= 10) && (distanceShipped <= 500))
+	{
+		//Calculate cost based on shipment type, package weight, rate, and distance shipped 
+		rate = 3.10;
+		rate /= 100;
+		cost = distanceShipped * rate;
+	}
+	else if ((shipmentType == 2) && (packageWeight > 1.0) && (packageWeight < 4.0) && (distanceShipped >= 10) && (distanceShipped <= 500))
+	{
+		//Calculate cost based on shipment type, package weight, rate, and distance shipped 
+		rate /= 100;
+		cost = distanceShipped * rate;
+	}
+	else if ((shipmentType == 2) && (packageWeight >= 4.0) && (packageWeight < 10.0) && (distanceShipped >= 10) && (distanceShipped <= 500))
+	{
+		//Calculate cost based on shipment type, package weight, rate, and distance shipped 
+		rate = 7.13;
+		rate /= 100;
+		cost = distanceShipped * rate;
+	}
+	else if ((shipmentType == 2) && (packageWeight >= 10.0) && (distanceShipped >= 10) && (distanceShipped <= 500))
+	{
+		//Calculate cost based on shipment type, package weight, rate, and distance shipped 
+		rate = 9.75;
+		rate /= 100;
+		cost = distanceShipped * rate;
+	}
+	else
+		valid = false;	//MIX/MAX distance parameters were not met
+
+	if ((valid) && (shipmentType == 1))	//If specific paramaters were met for type 1 shipping, output inputted values and cost for the user
+	{
+		cout << "\n" << endl;
+		cout << setw(14) << left << "Shipment type" << setw(2) << ":" << "Normal" << endl;
+		cout << setw(14) << setprecision(3) << fixed << "Weight" << setw(2) << ":" << packageWeight << endl;
+		cout << setw(14) << "Distance" << setw(2) << ":" << distanceShipped << endl;
+		cout << setw(14) << setprecision(2) << fixed << "Cost" << setw(2) << ":" << "$" << cost << endl;
+	}
+	else if ((valid) && (shipmentType == 2))	//If specific paramaters were met for type 2 shipping, output inputted values and cost for the user
+	{
+		cout << "\n" << endl;
+		cout << setw(14) << left << "Shipment type" << setw(2) << ":" << "Expedited" << endl;
+		cout << setw(14) << setprecision(3) << fixed << "Weight" << setw(2) << ":" << packageWeight << endl;
+		cout << setw(14) << "Distance" << setw(2) << ":" << distanceShipped << endl;
+		cout << setw(14) << setprecision(2) << fixed << "Cost" << setw(2) << ":" << "$" << cost << endl;
+	}
+	else
+		cout << "There was invalid input. Please try again." << endl;	//Output if invalid parameters are met
+	return 0;
+}
