@@ -1,0 +1,122 @@
+/*---------------------------------------------------------------------------=------
+Programmer : Jesse Moore
+Date due : November 1, 2020
+Description : This program will ask the user for the width and length of a rectangle
+and then display the rectangles area.
+ ---------------------------------------------------------------------------------*/
+
+#include <iostream>
+using namespace std;
+
+// Function prototypes
+double getLength();
+double getWidth();
+double getArea(double, double);
+void displayData(double, double, double);
+
+int main()
+{
+	//Set Windows console system colors (Black background with green font) 
+	system("COLOR 02");
+
+	double length;  // To hold the rectangle's length
+	double width;	// To hold the rectangle's width
+	double area;	// To hold the rectangle's area
+
+	//Explain the program to the user and get the input for the length and width of the rectangle using functions
+	cout << "This program will ask you for the length and width of a rectangle and then calculate the area." << endl;
+	cout << "The program will then output the rectangles data." << endl;
+	cout << "\n" << endl;
+
+	// Get the rectangle's length
+	length = getLength();
+
+	// Get the rectangle's width
+	width = getWidth();
+
+	// Get the rectangle's area
+	area = getArea(length, width);
+
+	// Display the rectangle's data
+	displayData(length, width, area);
+
+	return 0;
+}
+
+/* ------------------------------------------------------------------------
+ Function : getLength
+ Receives : 
+ Description : This function gets the length of the rectangle from the user
+ Returns : length ( a double )
+ Preconditions : 
+ ------------------------------------------------------------------------*/
+
+double getLength()
+{
+	// To hold the length
+	double length;  
+
+	// Get the length
+	cout << "Enter the length: ";
+	cin >> length;
+	cout << "\n" << endl;
+
+	// Return the length
+	return length;
+}
+
+/* ------------------------------------------------------------------------
+ Function : getWidth
+ Receives :
+ Description : This function gets the width of the rectangle from the user
+ Returns : width ( a double )
+ Preconditions :
+ ------------------------------------------------------------------------*/
+
+
+double getWidth()
+{
+	// To hold the width
+	double width;  
+
+	// Get the width
+	cout << "Enter the width: ";
+	cin >> width;
+	cout << "\n" << endl;
+
+	// Return the width
+	return width;
+}
+
+/* ------------------------------------------------------------------------
+ Function : getArea
+ Receives : length, width
+ Description : This function accepts the length and width as arguments, 
+ and returns the area of the rectangle
+ Returns : area ( a double )
+ Preconditions :
+ ------------------------------------------------------------------------*/
+
+double getArea(double length, double width)
+{
+	// Return the area
+	return length * width;
+}
+
+/* ------------------------------------------------------------------------
+ Function : displayData
+ Receives : length, width, area
+ Description : This function accepts the length, width, and area as
+ arguments, and displays the length, width, and area of the rectanagle
+ Returns : void
+ Preconditions :
+ ------------------------------------------------------------------------*/
+
+void displayData(double length, double width, double area)
+{
+	cout << "\nRectangle Data\n"
+		<< "--------------\n"
+		<< "Length: " << length << endl
+		<< "Width:  " << width << endl
+		<< "Area:   " << area << endl;
+}
