@@ -1,0 +1,65 @@
+/*------------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : October 27, 2020
+Description : This program will ask the user for the name of a text file being used. The text file contains 4 integers
+that represent integer temperatures measured in degrees Celsius. The program will convert the degrees Celsius into
+degrees Fahrenheit and output the conversion for the user.
+ ------------------------------------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	//Set Windows System color (black background with green text)
+	system("color 02");
+
+	//Define variables
+	ifstream inputFile;
+	int degreesCelsius, count;
+	double degreesFahrenheit;
+	string fileName;
+
+	//Explain the program to the user and get the name of the text file being used
+	cout << "This program will ask you for the name of a text file being used. The text file contains 4 integers" << endl;
+	cout << "that represent integer temperatures measured in degrees Celsius. The program will convert the degrees" << endl;
+	cout << "Celsius into degrees Fahrenheit and output the conversion." << endl;
+	cout << "\n" << endl;
+
+	//Get the filename from the user
+	cout << "Please enter the name of the text file to get input from:" << endl;
+	cin >> fileName;
+	cout << "\n" << endl;
+
+	//Open the file the user has chosen
+	inputFile.open(fileName);
+
+	//If the file sucessfully opened, process the file and continue the program
+	if (inputFile)
+	{
+		//For loop to get all 4 numbers from the file
+		for (count = 1; count <= 4; count++)
+		{
+			//Get the numbers from the file
+			inputFile >> degreesCelsius;
+
+			//Convert degrees Celsius into degrees Fahrenheit
+			degreesFahrenheit = static_cast <double>(degreesCelsius) * 9/5 + 32;
+
+			//Output the conversion for the user
+			cout << degreesCelsius << " degrees Celsius = " << setprecision(1) << fixed  << degreesFahrenheit << " degrees Fahrenheit" << endl;
+		}
+		//Close the file
+		inputFile.close();
+	}
+	else
+	{
+		//Display an error message if the file did not open correctly
+		cout << "Error opening the file." << endl;
+	}
+	//End the program
+	return 0;
+}
