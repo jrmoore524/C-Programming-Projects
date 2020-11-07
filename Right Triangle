@@ -1,0 +1,36 @@
+/*----------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date Due : September 27, 2020
+Description : This program will ask the user three values a, b, and c (in that order)
+representing the sides of a right triangle, and prompt the user to input the three values.
+The program will then tell the user whether or not the sides form a right triangle.
+------------------------------------------------------------------------------------------*/
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+
+	int a, b, c;
+
+	//Explain the program to the user, prompt the user to enter the three integer values (a,b,c) and allow the user to enter the three values
+
+	cout << "This program will ask you for 3 values (a,b,c) representing the sides of a right triangle, and then tell you whether or not the values form a right triangle." << endl;
+	cout << "Please enter a value for a:" << endl;
+	cin >> a;
+	cout << "Please enter a value for b:" << endl;
+	cin >> b;
+	cout << "Please enter a value for c:" << endl;
+	cin >> c;
+
+	//Use a IF statement to determine if the inputted values form a right triangle, and output the results for the user, and end the program
+
+	if ((pow(a, 2) + pow(b, 2)) == pow(c, 2))
+		cout << "The sides " << a << ", " << b << ", " << "and " << c << " form a right triangle" << endl;
+	if ((pow(a, 2) + pow(b, 2)) != pow(c, 2))
+		cout << "The sides " << a << ", " << b << ", " << "and " << c << " DO NOT form a right triangle" << endl;
+	return 0;
+}
