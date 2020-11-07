@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+
+	int valueOfA, valueOfB, valueOfC;
+	double valueOfX;
+
+	//Get input values for a, b, and c
+	
+	cout << "Please enter a value for a:" << endl;
+	cin >> valueOfA;
+	cout << "Please enter a value for b:" << endl;
+	cin >> valueOfB;
+	cout << "Please enter a value for c:" << endl;
+	cin >> valueOfC;
+
+	//Calculate the value of x
+	//To return a float value for valueOfX, type cast one or more of the operands to a double
+
+	valueOfX = (static_cast<double>(valueOfC) - valueOfB) / valueOfA;
+
+	//Print the equation and the value of x
+	
+	cout << "Your equation : " << valueOfA << "x + " << valueOfB << " = " << valueOfC << endl;
+	cout << "Has solution x = " << valueOfX << endl;
+	return 0;
+}
