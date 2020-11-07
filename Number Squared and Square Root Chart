@@ -1,0 +1,40 @@
+/*---------------------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : October 18, 2020
+Description : This program will ask you for two integers, then output the value of the numbers squared, and their square root
+in a chart. The chart will include the squares and square roots of all the numbers in between the two numbers as well
+ ---------------------------------------------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	//Define variables
+	int numberOne, numberTwo, square;
+	double squareRoot;
+
+	//Explain the program to the user and get the input for numberOne and numberTwo
+	cout << "This program will ask you for two integers, then output the value of the numbers squared, and their square root in a chart." << endl;
+	cout << "The chart will include the squares and square roots of all the numbers in between the two numbers as well." << endl;
+	cout << "\n" << endl;
+	cout << "Please enter two numbers (press enter in between each number):" << endl;
+	cin >> numberOne >> numberTwo;
+	cout << "\n" << endl;
+
+	//Display menu
+	cout <<  "Number" << setw(14) << right << "Square" << setw(20) << right << "Square Root" << endl;
+ 	cout << "========================================" << endl;
+	
+	//For loop to output squares and square roots in the number range
+	for (numberOne; numberOne <= numberTwo; numberOne++)
+	{
+		square = pow(numberOne, 2);
+		squareRoot = sqrt(numberOne);
+		cout << setw(6) << right << numberOne << setw(14) << right << square << setw(20) << right << setprecision(5) << fixed << squareRoot << endl;
+	}
+	//End the program
+	return 0;
+}
