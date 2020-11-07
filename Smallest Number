@@ -1,0 +1,97 @@
+/*----------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : November 3 , 2020
+Description :This program will ask you for four numbers, and output the numbers and the smallest number of the four
+ ----------------------------------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+//Function prototypes
+int getNumInput();
+int getSmallestNumber(int, int, int, int);
+void outputValues(int, int, int, int, int);
+
+int main()
+{
+	//Local variables for main
+	int numberOne, numberTwo, numberThree, numberFour, smallesNumber;
+
+	//Explain the program to the user
+	cout << "This program will ask you for four numbers, and output the numbers and the smallest number of the four." << endl;
+	cout << "\n" << endl;
+
+	//Call the getNumInput function to get number from user and store in number variables
+	numberOne = getNumInput();
+	numberTwo = getNumInput();
+	numberThree = getNumInput();
+	numberFour = getNumInput();
+
+	//Call the getSmallestNumber fucntion to calculate the smallest number and store in smallesNumber variable
+	smallesNumber = getSmallestNumber(numberOne, numberTwo, numberThree, numberFour);
+
+	//Call the outputValues function to ouput the four values and the smallest value
+	outputValues(numberOne, numberTwo, numberThree, numberFour, smallesNumber);
+
+	//End the program
+	return 0;
+}
+
+/* ---------------------------------------------------------------------------------
+ Function : getNumInput		
+ Receives : user input	
+ Description : This function will receive the users input for a number
+ returns : number ( a int )
+ Preconditions : none
+ --------------------------------------------------------------------------------*/
+int getNumInput()
+{
+	//To store the inputted number
+	int number;
+
+	//Get the number from the user
+	cout << "Please enter a number: " << endl;
+	cin >> number;
+
+	//Return the inputted number
+	return number;
+}
+/*-----------------------------------------------------------------------------------------------------
+* Function : getSmallestNumber
+* Receives : numberOne, numberTwo, numberThree, numberFour
+* Description : This function will receive all four numbers entered by the user and return the smallest
+* returns : smallesNumber ( a int )
+* Preconditions : None
+------------------------------------------------------------------------------------------------------*/
+int getSmallestNumber(int numberOne, int numberTwo, int numberThree, int numberFour)
+{
+	//To store the smallest number and set king
+	int smallestNumber = numberOne;
+
+	//If statements (king of the mountain) to determine the smallest number
+	if (numberTwo < smallestNumber)
+		smallestNumber = numberTwo;
+	if (numberThree < smallestNumber)
+		smallestNumber = numberThree;
+	if (numberFour < smallestNumber)
+		smallestNumber = numberFour;
+
+	//Return the smallest number
+	return smallestNumber;
+}
+/*----------------------------------------------------------------------------------
+* Function : outputValues
+* Receives : numberOne, numberTwo, numberThree. numberFour, numberFive, smallestNumber
+* Description : This function will receive all four values entered by the user and the 
+smalles value that was calculated, and output the values and the smallest value
+returns : Void
+Preconditions : None
+*/
+void outputValues(int numberOne, int numberTwo, int numberThree, int numberFour, int smallestNumber)
+{
+	//Output the values of the four numbers and the smallest number
+	cout << "\n" << endl;
+	cout << "Your values were: " << numberOne << " " << numberTwo << " " << numberThree << " " << numberFour << endl;
+	cout << "The smallest is: " << smallestNumber << endl;
+}
