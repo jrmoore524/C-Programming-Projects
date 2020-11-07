@@ -1,0 +1,225 @@
+/*----------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : October 21, 2020
+Description : This program will be a menu driven program. It will give the user 3 options.
+* For option 1, the user will be able to simulate a match of rock, paper, scissors.
+* For option 2, the user will be able to simulate a game of Yahtzee.
+* For option 3, the program will end.
+ ---------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+	//Set Windows console system colors (Black background with green font) 
+	system("COLOR 02");
+
+	//Initial seed of the random number generator for the program
+	//Generate the time
+	unsigned seed = time(0);
+
+	//Seed the random number generator
+	srand(seed);
+
+	//Define menu variables
+	int choice;
+
+	//Variables for rock, paper, scissors game
+	int playerOneScore, playerTwoScore, playerOneChoice, playerTwoChoice, gameWinsPerMatch, game = 1;
+	const int ROCK = 1,
+		PAPER = 2,
+		SCISSORS = 3;
+
+	//Variables for Yahtzee game
+	int diceOne, diceTwo, diceThree, diceFour, diceFive, roll = 1, counter = 2;
+
+	//Do/While loop to keep program displaying the menu when program is restarted
+	do
+	{
+		//Output the menu
+		cout << "\n" << endl;
+		cout << "Menu" << endl;
+		cout << "====" << endl;
+		cout << "1. Play rock-paper-scissors" << endl;
+		cout << "2. Play Yahtzee" << endl;
+		cout << "3. Exit" << endl;
+		cout << "\n" << endl;
+		cout << "Enter your choice:" << endl;
+		cin >> choice;
+		cout << "\n" << endl;
+
+		//Switch statement for menu choice
+		switch (choice)
+		{
+			//Case one if the game of rock, paper, scissors is chosen from the menu
+		case 1: cout << "How many game wins will it take to win the match? (enter a odd number):" << endl;
+
+			//Reset players scores and the game wins per match to zero after match is won
+			playerOneScore = 0;
+			playerTwoScore = 0;
+			gameWinsPerMatch = 0;
+
+			//Get the number of game wins per match from the user
+			cin >> gameWinsPerMatch;
+			cout << "\n" << endl;
+
+			//If/Else statement to test if games per match is a even number
+			if (gameWinsPerMatch % 2 == 0)
+			{
+				//Output if game wins per match inputted by the user is a even number
+				cout << "The total number of game wins per match must be an odd number." << endl;
+				cout << "\n" << endl;
+			}
+			else	//If game wins per match inputted by the user is a odd number
+			{
+				//While loop to keep simulating games until the set game wins per match amount is met
+				while ((playerOneScore < gameWinsPerMatch) && (playerTwoScore < gameWinsPerMatch))
+				{
+					//Generate random numbers for players choices
+					playerOneChoice = rand() % 3 + 1;
+					playerTwoChoice = rand() % 3 + 1;
+
+					//Output game number
+					cout << "game #" << game << endl;
+
+					//Output and switch statement for player one's choice
+					cout << "player1 : ";
+
+					switch (playerOneChoice)
+					{
+					case 1: cout << "rock" << endl;
+						break;
+					case 2: cout << "paper" << endl;
+						break;
+					case 3: cout << "scissors" << endl;
+						break;
+					}
+					//Output and switch statement for player two's choice
+					cout << "player2 : ";
+
+					switch (playerTwoChoice)
+					{
+					case 1: cout << "rock" << endl;
+						break;
+					case 2: cout << "paper" << endl;
+						break;
+					case 3: cout << "scissors" << endl;
+						break;
+					}
+					//If/ElseIf statements to test matches and add to players total score
+					if (playerOneChoice == playerTwoChoice)
+					{
+						playerOneScore += 0;
+						playerTwoScore += 0;
+					}
+					else if ((playerOneChoice == 1) && (playerTwoChoice == 3))
+						playerOneScore++;
+					else if ((playerOneChoice == 3) && (playerTwoChoice == 2))
+						playerOneScore++;
+					else if ((playerOneChoice == 2) && (playerTwoChoice == 1))
+						playerOneScore++;
+					else
+						playerTwoScore++;
+
+					//Output the players total scores at the end of each game
+					cout << "player1 = " << playerOneScore << ", " << "player2 = " << playerTwoScore << endl;
+					cout << "\n" << endl;
+
+					//If player 1 won the match
+					if (playerOneScore == gameWinsPerMatch)
+						cout << "PLAYER1 WINS THE MATCH!" << endl;
+
+					//If player 2 won the match
+					if (playerTwoScore == gameWinsPerMatch)
+						cout << "PLAYER2 WINS THE MATCH!" << endl;
+
+					//Add one to game number at the end of the loop
+					game++;
+					cout << "\n" << endl;
+				}
+				//Pause the Do/While loop and ask the user to press any key to continue and clear the screen 
+				system("pause");
+				cin.get();
+				system("cls");
+			}
+			break;
+
+			//Case two if the game of Yahtzee is chosen from the menu
+		case 2:
+			//While loop to keep the dice rolling until a Yhatzee breaks the loop
+			while (roll < counter)
+			{
+				//Clear all the dice when while loop restarts
+				diceOne = 0;
+				diceTwo = 0;
+				diceThree = 0;
+				diceFour = 0;
+				diceFive = 0;
+
+				//Generate random dice numbers
+				diceOne = rand() % 6 + 1;
+				diceTwo = rand() % 6 + 1;
+				diceThree = rand() % 6 + 1;
+				diceFour = rand() % 6 + 1;
+				diceFive = rand() % 6 + 1;
+
+				//If roll count is not a multiple of 5 and no Yahtzee is found
+				if (roll % 5 != 0)
+				{
+					cout << "Roll " << roll << " : " << diceOne << " " << diceTwo << " " << diceThree << " " << diceFour << " " << diceFive << endl;
+					roll++;
+					counter++;
+				}
+				//If roll count is a multiple of 5 options
+				else if (roll % 5 == 0)
+				{
+					/*If roll count is a multiple of 5 and all dice are the same = Yahtzee!! (This is necessary to stop the game from printing
+					 out "No matches this time" when Yahtzee is hit on a multiple of 5 roll */
+					if ((diceOne == diceTwo) && (diceTwo == diceThree) && (diceThree == diceFour) && (diceFour == diceFive))
+					{
+						break;
+					}
+					//If roll count is a multiple of 5 and all dice are not the same
+					else
+					{
+						cout << "Roll " << roll << " : " << diceOne << " " << diceTwo << " " << diceThree << " " << diceFour << " " << diceFive;
+						cout << "  No matches this time!" << endl;
+						roll++;
+						counter++;
+					}
+				}
+				//If all matching dice are found = Yahtzee
+				if ((diceOne == diceTwo) && (diceTwo == diceThree) && (diceThree == diceFour) && (diceFour == diceFive))
+				{
+					roll = 1;
+					break;
+				}
+			}
+			//Output if Yahtzee is hit
+			cout << "YAHTZEE!" << endl;
+			cout << "\n" << endl;
+
+			//Pause the Do/While loop and ask the user to press any key to continue and clear the screen 
+			system("pause");
+			cin.get();
+			system("cls");
+
+			break;
+
+			//Case 3 to end the program
+		case 3: cout << "The program is over" << endl;
+			cout << "\n" << endl;
+			break;
+
+			//Default output if choice is not a valid menu choice
+		default: cout << "That is not a valid menu choice" << endl;
+			cout << "\n" << endl;
+			break;
+		}
+	} while (choice != 3);
+	return 0;
+}
