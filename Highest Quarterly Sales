@@ -1,0 +1,151 @@
+/*-----------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : November 1, 2020
+Description :This program will determine which of a company’s four divisions
+(Northeast, Southeast, Northwest, and Southwest) had the greatest sales for a quarter.
+This program will then save the sales data to a file called "quarterlySales.txt"
+ ----------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <fstream>
+using namespace std;
+
+// Function prototypes
+double getSales(string);
+string findHighest(double, double, double, double);
+
+//Golbal Constants for division names (need to access the variables in function "main" and function "findHighest")
+const string NORTH_EAST = "Northeast",		//To hold NE division name
+			 SOUTH_EAST = "Southeast",		//To hold SE division name
+			 NORTH_WEST = "Northwest",		//To hold NW division name
+			 SOUTH_WEST = "Southwest";		//To hold SW division name
+
+//Global variable (need to access the variable in function "main" and function "findHighest")
+string topDivision;			//To hold the division with the top sales
+
+int main()
+{
+	//Set Windows console system colors (Black background with green font) 
+	system("COLOR 02");
+
+	//File stream object
+	ofstream outputFile;
+
+	//Open the file for saving sales data
+	outputFile.open("quarterlySales.txt");
+
+	//Explain the program to the user
+	cout << "This program will determine which company division had the greatest sales for a quarter." << endl;
+	cout << "The four divisions of the company are Northeast, Southeast, Northwest, and Southwest." << endl;
+	cout << "\n" << endl;
+
+	//Call the getSales function to get the quarterly sales figures for each division and save figures to "quarterlySales.txt"
+
+	//To hold NE quarterly sales total and save sales to file
+	double northEastSales = getSales(NORTH_EAST);
+	outputFile << setprecision(2) << fixed << NORTH_EAST << " division quarterly sales: $" << northEastSales << endl;
+
+	//To hold SE quarterly sales total and save sales to file
+	double southEastSales = getSales(SOUTH_EAST);
+	outputFile << setprecision(2) << fixed << SOUTH_EAST << " division quarterly sales: $" << southEastSales << endl;
+
+	//To hold NW quarterly sales total and save sales to file
+	double northWestSales = getSales(NORTH_WEST);
+	outputFile << setprecision(2) << fixed << NORTH_WEST << " division quarterly sales: $" << northWestSales << endl;
+
+	//To hold SW quarterly sales total and save sales to file
+	double southWestSales = getSales(SOUTH_WEST);
+	outputFile << setprecision(2) << fixed << SOUTH_WEST << " division quarterly sales: $" << southWestSales << endl;
+
+	//Call the findHighest function to determine which division had the highest quarterly sales
+	//and save the top division to file
+	topDivision = findHighest(northEastSales, southEastSales, northWestSales, southWestSales);
+	outputFile << "Highest quarterly sales : " << topDivision;
+
+	//Close the file
+	outputFile.close();
+
+	//End the program
+	return 0;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getSales
+ Receives : the name of a sales region
+ Description : This function receives the name of a sales divisions, and accepts
+ input for the quarterly sales total for that region
+ Returns : quarterlySales ( a double )
+ Preconditions : Validate a value greater than $0.00 
+ -----------------------------------------------------------------------------*/
+
+double getSales(string division)
+{
+	//To hold the quarterly sales
+	double sales;
+
+	//Get the sales totals for the division
+	cout << "Please enter the quarterly sales for the " << division << " division:" << endl;
+	cin >> sales;
+	cout << "\n" << endl;
+	
+	//While loop to validate sales value for greater than $0.00
+	while (sales < 0.00)
+	{
+		cout << "Please enter a sales value greater than $0.00." << endl;
+		cin >> sales;
+		cout << "\n" << endl;
+	}
+	
+	//Return the sales value
+	return sales;
+}
+
+/* --------------------------------------------------------------------------
+ Function : findHighest
+ Receives : all the division sales totals 
+ Description : This function receives all four sales totals, and outputs
+ the division with the highest quarterly sales and the sales for that division
+ Returns : topDivision ( a string )
+ Preconditions : none
+ --------------------------------------------------------------------------*/
+
+string findHighest(double northEastSales, double southEastSales, double northWestSales, double southWestSales)
+{
+	//To hold the higest quarterly division sales numbers 
+	double highestSales;
+
+	//King of the Mountain alghorithm to check which division had the highest quarterly sales
+	//set Northeast to king
+	highestSales = northEastSales;
+	topDivision = NORTH_EAST;
+
+	if (southEastSales > highestSales)
+	{
+		highestSales = southEastSales;
+		topDivision = SOUTH_EAST;
+	}
+	if (northWestSales > highestSales)
+	{
+		highestSales = northWestSales;
+		topDivision = NORTH_WEST;
+	}
+	if (southWestSales > highestSales)
+	{
+		highestSales = southWestSales;
+		topDivision = SOUTH_WEST;
+	}
+	//If statement to output the top division and its quarterly sales
+	if (highestSales)
+	{
+		cout << "The division with the highest quarterly sales was the " << topDivision <<" division." << endl;
+		cout << "The quarterly sales for the " << topDivision << " division were $" << setprecision(2) << fixed << highestSales << "." << endl;
+		cout << "\n" << endl;
+		cout << "The sales data has been saved to \"quarterlySales.txt\"." << endl;
+
+		//Return the top division for saving to file
+		return topDivision;
+	}
+	cout << "\n" << endl;
+}
