@@ -1,0 +1,89 @@
+/*---------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : November 3 , 2020
+Description : This program will convert degrees Fahrenheit to degrees Celsius
+ --------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+//Function prototypes 
+int getTempFahrenheit();
+double convertCelsius(int);
+void showOutput(int, double);
+
+int main()
+{
+	//Local variables for main
+	int fahrenheit;
+	double celsius;
+
+	//Call getTempFahrenheit function to get the temp from the user
+	fahrenheit = getTempFahrenheit();
+
+	//Call converCelsius function to convert Fahrenheit into degrees Celsius
+	celsius = convertCelsius(fahrenheit);
+
+	//Call the showOutput function to output the conversion for the user
+	showOutput(fahrenheit, celsius);
+
+	//End the program
+	return 0;
+
+}
+
+/* ---------------------------------------------------------------------------------
+ Function : getTempFahrenheit
+ Receives : nothing
+ Description : This function will get the temperature in fahrenheit from the user
+ Returns : temFahrenheit ( a int )
+ Preconditions : None
+ ----------------------------------------------------------------------------------*/
+int getTempFahrenheit()
+{
+	//To hold the temperature in Fahrenheit
+	int tempFahrenheit;
+
+	//Get the temp in fahrenheit from the user
+	cout << "Please enter the temperature in fahrenheit: " << endl;
+	cin >> tempFahrenheit;
+
+	//Return the temperature in fahrenheit
+	return tempFahrenheit;
+
+}
+
+/*-----------------------------------------------------------------------------------
+Function : convertCelsius
+Receives : fahrenheit
+Description : This function will convers degrees Fahrenheit into degrees Celsius
+Returns : tempCelsius (a double )
+Preconditions : None
+------------------------------------------------------------------------------------*/
+
+double convertCelsius(int fahrenheit)
+{
+	//To hold the temperature in Celsius
+	double tempCelsius;
+
+	//Conversion from fahrenheit to celsius
+	tempCelsius = 5.0 / 9.0 * (fahrenheit - 32.0);
+
+	//Return the temp in Celsius
+	return tempCelsius;
+}
+
+/*------------------------------------------------------------------------------------------
+Function : showOutput
+Receives : fahrenheit, celsius
+Description : This function will output the degrees Fahrenheit converted to degrees Celsius
+Returns : void
+Preconditions : None
+--------------------------------------------------------------------------------------------*/
+void showOutput(int fahrenheit, double celsius)
+{
+	//Output the conversion
+	cout << fahrenheit << " degrees Fahrenheit = " << setprecision(2) <<  fixed << celsius << " degrees Celsius" << endl;
+}
