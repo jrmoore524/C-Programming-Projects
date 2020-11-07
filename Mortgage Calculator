@@ -1,0 +1,58 @@
+/*--------------------------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date Due : September 23, 2020
+Description : This program will calculate the monthly payment of a mortgage loan. It will ask the user
+for the cost of the house, the amount of the down payment, the yearly interest rate (as a percent like 4.5),
+and the number of months for the loan, and allow the user to input the values. It will then calculate the amount
+borrowed, monthly payment, total of payments, and the total interest paid, and ouput the amounts 
+---------------------------------------------------------------------------------------------------------------*/
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main()
+{
+	//Define variables
+
+	int numberOfMonths;
+	double costOfHouse, downPayment, yearlyInterestRate, amountBorrowed, monthlyInterestRate, totalCompoundedInterest, monthlyPayment, totalOfPayments, totalInterest;
+
+	/*Explain the program to the user, prompt the user to input the values for the cost of the house, amount of the down payment, yearly interest rate, and number
+	of months for the loan, and allow the user to input the values
+	*/
+
+	cout << "This program will calculate the monthly payment of a mortgage loan based on cost of the house, amount of the down payment, yearly interest rate, and the number of months for the loan. " << endl;
+	cout << "Please enter the cost of the house (as a decmial):" << endl;
+	cin >> costOfHouse;
+	cout << "Please enter the amount of the down payment (as a decimal):" << endl;
+	cin >> downPayment;
+	cout << "Please enter the yearly interest rate (as a percent like 4.5):" << endl;
+	cin >> yearlyInterestRate;
+	cout << "Please enter the number of months of the loan:" << endl;
+	cin >> numberOfMonths;
+
+	//Calculate the monthly payments of the mortgage loan based on the users inputted values
+
+	amountBorrowed = costOfHouse - downPayment;
+	yearlyInterestRate /= 100;
+	monthlyInterestRate = yearlyInterestRate / 12;
+	totalCompoundedInterest = pow(1 + monthlyInterestRate, numberOfMonths);
+	monthlyPayment = amountBorrowed * (monthlyInterestRate * totalCompoundedInterest / (totalCompoundedInterest - 1));
+	totalOfPayments = (roundf(monthlyPayment * 100.0) / 100.0) * numberOfMonths;
+	totalInterest = totalOfPayments - amountBorrowed;
+	yearlyInterestRate *= 100;
+	
+	//Output the values entered by the user including the amount borrowed, monthly payment, total of payments, and total interest, and end the program
+
+	cout << setw(23) << "Cost of house : " << "$" << setprecision(2) << fixed << costOfHouse << endl;
+	cout << setw(23) << "Down payment : " <<  "$" << downPayment << endl;
+	cout << setw(23) << "Amount borrowed : " << "$" << amountBorrowed << endl;
+	cout << setw(23) << "Yearly interest rate : " << setprecision(3) << fixed << yearlyInterestRate << "%" << endl;
+	cout << setw(23) << "Number of months : " << numberOfMonths << endl;
+	cout << setw(23) << "Monthly Payment : " << "$" << setprecision(2) << fixed << monthlyPayment << endl;
+	cout << setw(23) << "Total of Payments : " << "$" << setprecision(2) << fixed << showpoint << totalOfPayments << endl;
+	cout << setw(23) << "Total interest : " << "$" << setprecision(2) << fixed << showpoint << totalInterest << endl;
+	return 0;
+}
