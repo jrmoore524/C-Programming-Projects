@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date due : November 8, 2020
+Date: November 8, 2020
 Description :This program will display the status of an order for Middletown Copper Wire
 Company
  -------------------------------------------------------------------------------------*/
@@ -8,7 +8,6 @@ Company
 #include <iostream>
 #include <string>
 #include <iomanip>
-#include <cmath>
 using namespace std;
 
 //Function prototypes
