@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date Due : September 27, 2020
+Date: September 27, 2020
 Description : This program will ask the user for one number and prompt the user to input the value.
 It will then tell the user what the numbers approximate square root is(if it has one)
 -------------------------------------------------------------------------------------------------*/
