@@ -1,0 +1,149 @@
+/*-----------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : November 8, 2020
+Description :This program will calculate the average of a group of test scores, where
+the lowest score in the group is dropped.
+ ----------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+//Function prototypes
+void getScore(double&);
+double findLowest(double, double, double, double, double);
+double highestScores(double, double, double, double, double, double);
+double calcAverage(double);
+void outputResults(double, double, double, double, double, double, double);
+
+int main()
+{
+	//Set Windows console system colors (Black background with green font) 
+	system("COLOR 02");
+
+	//Explain the program to the user
+	cout << "This program will calculate the average of a group of test scores, where the lowest score in the group is dropped." << endl;
+	cout << "\n" << endl;
+
+	//Local variable for main
+	double score1, score2, score3, score4, score5;
+
+	//Call function getScore to get all 5 test scores
+	getScore(score1);
+	getScore(score2);
+	getScore(score3);
+	getScore(score4);
+	getScore(score5);
+	cout << "\n" << endl;
+
+	//Call function findLowest and set lowestTestScore to returned value
+	double lowestTestScore = findLowest(score1, score2, score3, score4, score5);
+
+	//Call the higestScores function and set fourHighestScores to returned value
+	double fourHighestScores = highestScores(score1, score2, score3, score4, score5, lowestTestScore);
+
+	//Call function calcAverage and set average to retured value
+	double average = calcAverage(fourHighestScores);
+
+	//Call outputResults function to display the five scores, the lowest dropped score, and the average of the top four scores
+	outputResults(score1, score2, score3, score4, score5, lowestTestScore, average);
+	return 0;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getScore
+ Receives : user input for the 5 test scores
+ Description : This function receives the users input for 5 test scores
+ Returns : void
+ Preconditions : None
+ -----------------------------------------------------------------------------*/
+void getScore(double &refVar)
+{
+	//To hold the counter for test number
+	static int count = 1;
+
+	//Get the users input for the 5 test scores and store in reference variable
+	cout << "Please enter the score for test " << count << ":" << endl;
+	cin >> refVar;
+	count++;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : findLowest
+ Receives : score1, score2, score3, score4, score5
+ Description : This function will find and return the lowest of the fives scores
+ passed to it
+ Returns : lowestScore ( a double )
+ Preconditions : None
+ -----------------------------------------------------------------------------*/
+double findLowest(double score1, double score2, double score3, double score4, double score5)
+{
+	//To hold the lowest score
+	double lowestScore;
+
+	//King of the Mountain alghorithm to test which score is lowest
+	//Set score1 to the King
+	lowestScore = score1;
+	if (score2 < lowestScore)
+		lowestScore = score2;
+	if (score3 < lowestScore)
+		lowestScore = score3;
+	if (score4 < lowestScore)
+		lowestScore = score4;
+	if (score5 < lowestScore)
+		lowestScore = score5;
+
+	//Return the lowest score
+	return lowestScore;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : highestScores	
+ Receives : score1, score2, score3, score4, score5, lowestTestScore
+ Description : This function receives the users input for 5 test scores
+ Returns : void
+ Preconditions : None
+ -----------------------------------------------------------------------------*/
+double highestScores(double score1, double score2, double score3, double score4, double score5, double lowestTestScore)
+{
+	//Return the total of the four higest test scores
+	return (score1 + score2 + score3 + score4 + score5) - lowestTestScore;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : calcAverage
+ Receives : fourHighestScores
+ Description : This function will calculate and display the average of the four
+ highest scores
+ Returns : the average of the four higest scores
+ Preconditions : None
+ -----------------------------------------------------------------------------*/
+double calcAverage(double fourHighestScores)
+{
+	//Return the average
+	return fourHighestScores / 4;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : outputResults
+ Receives : score1, score2, score3, score4, score5, lowestScore, average
+ Description : This function receives the 5 test scores, lowestScore, and the 
+ average score and outputs them to the screen
+ Returns : void
+ Preconditions : None
+ -----------------------------------------------------------------------------*/
+void outputResults(double score1, double score2, double score3, double score4, double score5, double lowestScore, double average)
+{
+	//Set output format
+	cout << setprecision(1) << fixed << endl;
+	cout << "=============================" << endl;
+	cout << "Test Score 1: " << score1 << endl;
+	cout << "Test Score 2: " << score2 << endl;
+	cout << "Test Score 3: " << score3 << endl;
+	cout << "Test Score 4: " << score4 << endl;
+	cout << "Test Score 5: " << score5 << endl;
+	cout << "Lowest Score Dropped: " << lowestScore << endl;
+	cout << "Average of Top 4 Scores: " << average << endl;
+	cout << "=============================" << endl;
+}
