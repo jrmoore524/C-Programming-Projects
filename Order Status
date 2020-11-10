@@ -1,0 +1,259 @@
+/*-------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date due : November 8, 2020
+Description :This program will display the status of an order for Middletown Copper Wire
+Company
+ -------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+//Function prototypes
+void displayHeader();
+int getSpoolsOrdered();
+int getSpoolsInStock();
+int getBackorderedSpools(int, int);
+int getSpoolsReadyToShip(int, int);
+double getSubTotal(int);
+double getSpecialCharges();
+double getOrderTotal(double, double);
+void displayOrderStatus(int, int, int, int, double, double, double);
+
+int main()
+{
+	//Set Windows console system colors (Black background with green font) 
+	system("COLOR 02");
+
+	//Call displayHeaderFunction to display the programs header
+	displayHeader();
+
+	//Call the getSpoolsOrdered function to get the number of spools being ordered by the customer
+	//and store in totalSpoolsOrdered
+	int totalSpoolsOrdered = getSpoolsOrdered();
+	cout << "\n" << endl;
+
+	//Call the getSpoolsInStock function to check how many spools of copper wire are currently in stock
+	//and store in totalSpoolsInStock
+	int totalSpoolsInStock = getSpoolsInStock();
+	cout << "\n" << endl;
+
+	//Call the getBackorderedSpools function to check how many spools will be on backorder
+	//and store in totalBackorderedSpools
+	int totalBackorderedSpools = getBackorderedSpools(totalSpoolsOrdered, totalSpoolsInStock);
+
+	//Call the spoolsReadyToShip to calculate how many spools are ready to ship based on spools ordered
+	//and spools in stock, and store in totalSpoolsReadyToShip
+	int totalSpoolsReadyToShip = getSpoolsReadyToShip(totalSpoolsOrdered, totalBackorderedSpools);
+
+	//Call the getSubTotal function to get the orders subtotal before special charges and store in subTotal
+	double subTotal = getSubTotal(totalSpoolsReadyToShip);
+
+	//Call the specialCharges function to get any special charges for the order (shipping/handling)
+	//and store in totalSpecialCharges
+	double totalSpecialCharges = getSpecialCharges();
+	cout << "\n" << endl;
+
+	//Call the orderTotal function to calculate the orders total with any special charges included
+	//and store in orderTotal
+	double orderTotal = getOrderTotal(subTotal, totalSpecialCharges);
+
+	//Call displayOrderStatus function to display the order status 
+	displayOrderStatus(totalSpoolsOrdered, totalSpoolsInStock, totalBackorderedSpools, totalSpoolsReadyToShip, subTotal, totalSpecialCharges, orderTotal);
+
+	//End the program
+	return 0;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : displayHeader
+ Receives : 
+ Description : This function displays the programs header with the company info
+ and the order input
+ Returns : void
+ Preconditions : none 
+ -----------------------------------------------------------------------------*/
+void displayHeader()
+{
+	cout << "  Middletown Wholesale Copper Wire Company Order Input" << endl;
+	cout << "-------------------------------------------------------" << endl;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getSpoolsOrdered
+ Receives :	user input for the number of spools being ordered
+ Description : This function will ask the user for the number of spools of copper
+ wire being ordered by the customer
+ Returns : spoolsOrdered
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+int getSpoolsOrdered()
+{
+	//To hold the number of spools being ordered
+	int spoolsOrdered;
+
+	//Get the number of spools being ordered from the user
+	cout << "Please enter the number of spools of wire being ordred:" << endl;
+	cin >> spoolsOrdered;
+	
+	//If statement to validate if the number of spools ordered is less than 1
+	if (spoolsOrdered < 1)
+	{
+		cout << "Order amounts cannot be less than 1!" << endl;
+		cout << "Please enter the number of spools of wire being ordered:" << endl;
+		cin >> spoolsOrdered;
+	}
+	
+	//Return the number of spools being ordered
+	return spoolsOrdered;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getSpoolsInStock
+ Receives :	user input for the number of spools that are currently in stock
+ Description : This function will ask the user for the number of spools of copper
+ wire that are currently in stock
+ Returns : spoolsInStock
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+int getSpoolsInStock()
+{
+	//To hold the number of spools that are in stock
+	int spoolsInStock;
+
+	//Get the number of spools that are currently in stock from the user
+	cout << "Please enter the number of spools that are currently in stock:" << endl;
+	cin >> spoolsInStock;
+
+	//If statement to validate if the number of spools in stock is less than 0
+	if (spoolsInStock < 0)
+	{
+		cout << "Stock counts cannot be less than 0!" << endl;
+		cout << "Please enter the number of spools that are currently in stock:" << endl;
+		cin >> spoolsInStock;
+	}
+
+	//Return the number of spools that are in stock
+	return spoolsInStock;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getBackOrderedSpools
+ Receives :	totalSpoolsOrdered, totalSpoolsInStock
+ Description : This function will calculate the number of spools that will be on 
+ backorder based on the total number of spools ordered and the total number of 
+ spools that are currently in stock
+ Returns : backOrderedSpools
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+int getBackorderedSpools(int totalSpoolsOrdered, int totalSpoolsInStock)
+{
+	//To hold the number of backordered spools
+	int backorderedSpools;
+
+	//If/Else statment to check if there will be any backordered spools on the order
+	if (totalSpoolsInStock >= totalSpoolsOrdered)
+		backorderedSpools = 0;
+	else
+		backorderedSpools = totalSpoolsOrdered - totalSpoolsInStock;
+
+	//Return the number of backordered spools
+	return backorderedSpools;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getSpoolsReadyToShip
+ Receives :	totalSpoolsOrdered, totalBackorderedSpools
+ Description : This function will calculate the number of spools that are ready 
+ to ship based on the total spools ordered and the total number of back ordered spools
+ Returns : spoolsReadyToShip
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+int getSpoolsReadyToShip(int totalSpoolsOrdered, int totalBackorderedSpools)
+{
+	//To hold the number of spools ready to ship
+	int spoolsReadyToShip;
+
+	//If/Else statement to calculate the number of spools ready to ship
+	if (totalBackorderedSpools == 0)
+		spoolsReadyToShip = totalSpoolsOrdered;
+	else
+		spoolsReadyToShip = totalSpoolsOrdered - totalBackorderedSpools;
+
+	//Return the number of spools ready to ship
+	return spoolsReadyToShip;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getSpecialCharges
+ Receives :	user input for any special shipping/handling charges for the order
+ Description : This function will ask the user if there is any special shipping
+ or handling charges for the order
+ Returns : specialCharges
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+double getSpecialCharges()
+{
+	//To hold any special charges for the order
+	double specialCharges;
+
+	//Get the input for any special shipping/handling charges for the order (no flat rate)
+	cout << "Please enter any special shipping/handling charges for this order:" << endl;
+	cin >> specialCharges;
+
+	//Return the special charges for the order
+	 return specialCharges;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getSubTotal
+ Receives :	totalSpoolsReadyToShip
+ Description : This function will calculate the subtotal of the order based on
+ the total spools ready to ship @ $100.00 per spool
+ Returns : the subtotal
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+double getSubTotal(int totalSpoolsReadyToShip)
+{
+	//Return the subtotal
+	return totalSpoolsReadyToShip * 100.00;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getOrderTotal
+ Receives :	subTotal, totalSpecialCharges
+ Description : This function will calculate the order total based on the subtotal
+ and any special charges for the order
+ Returns : the order total
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+double getOrderTotal(double subTotal, double totalSpecialCharges)
+{
+	//Return the order total
+	return subTotal + totalSpecialCharges;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : displayOrderStatus
+ Receives :	totalSpoolsOrdered, totalSpoolsInStock, totalBackorderedSpools, subTotal, totalSpecialCharges, orderTotal
+ Description : This function will display the entire order status for the user
+ Returns : void
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+void displayOrderStatus(int totalSpoolsOrdered, int totalSpoolsInStock, int totalBackorderedSpools, int totalSpoolsReadyToShip, double subTotal, double totalSpecialCharges, double orderTotal)
+{
+	//Set output format
+	cout << setprecision(2) << fixed << endl;
+	cout << "		    -Order Status-" << endl;
+	cout << "-------------------------------------------------------" << endl;
+	cout << "Total Spools Ordered: " << totalSpoolsOrdered << endl;
+	cout << "Total Spools in Stock: " << totalSpoolsInStock << endl;
+	cout << "Total Backordered Spools: " << totalBackorderedSpools << endl;
+	cout << "Total Spools Ready to Ship: " << totalSpoolsReadyToShip << endl;
+	cout << "Subtotal: " << subTotal << endl;
+	cout << "Special Charges (shipping/handling): " << totalSpecialCharges << endl;
+	cout << "Order Total: " << orderTotal << endl;
+	cout << "-------------------------------------------------------" << endl;
+}
