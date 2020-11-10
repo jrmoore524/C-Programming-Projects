@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date due : November 1, 2020
+Date: November 1, 2020
 Description :This program will calculuate how far a item has fallen (in meters) over 
 the amount of time that the object has fallen (1-10 seconds)
  ----------------------------------------------------------------------------------*/
