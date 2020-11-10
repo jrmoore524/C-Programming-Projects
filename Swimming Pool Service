@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date Due : October 4, 2020
+Date: October 4, 2020
 Description : This program will be a menu-driven program for a swimming pool service company.
 The program will calculate the price charged to the customer based on the users inputted values
 for customer level, type of service, and any discounts that may be applied, and output the results for the user.
