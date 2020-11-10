@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date Due : October 4, 2020
+Date: October 4, 2020
 Description : This program will be a menu-driven program for a shipping company. The program will calculate
 the cost of the shipment based on the users inputted values for the shipment type, weight of package, and the
 distance that package is being shipped, and output the results for the user.
