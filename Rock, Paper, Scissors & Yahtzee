@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date due : October 21, 2020
+Date: October 21, 2020
 Description : This program will be a menu driven program. It will give the user 3 options.
 * For option 1, the user will be able to simulate a match of rock, paper, scissors.
 * For option 2, the user will be able to simulate a game of Yahtzee.
