@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date Due : September 23, 2020
+Date: September 23, 2020
 Description : This program will calculate the performance of a investment. It will ask the user for the amount of principal,
 the interest rate as a percent (like 1.2), the number of times interest is compounded per year, and the number of years that
 the investment will last, and let the user input the values. It will then caluculate the ending balance, and the amount of
