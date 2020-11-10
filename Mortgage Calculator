@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date Due : September 23, 2020
+Date: September 23, 2020
 Description : This program will calculate the monthly payment of a mortgage loan. It will ask the user
 for the cost of the house, the amount of the down payment, the yearly interest rate (as a percent like 4.5),
 and the number of months for the loan, and allow the user to input the values. It will then calculate the amount
