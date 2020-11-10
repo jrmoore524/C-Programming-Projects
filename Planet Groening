@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date due : October 11, 2020
+Date: October 11, 2020
 Description : This program will be a menu driven program based on the planet Groening. It will ask the user
 for the number of days or weeks in a month (depending on menu choice), then print the names of the months that
 have that number of days or weeks, and also how many days or weeks are in each of the months. 
