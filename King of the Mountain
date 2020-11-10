@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date due : October 27, 2020
+Date: October 27, 2020
 Description : This program is based on the game "The King of the Mountain". This program will ask the user for the
 name of a text file to get input from. The file will contain a unknown number of integers and the first number in the 
 file will be set to the king. The program will then print the numbers, one per line, after testing if the new number
