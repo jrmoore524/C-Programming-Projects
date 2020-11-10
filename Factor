@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date Due : September 27, 2020
+Date: September 27, 2020
 Description : This program will ask the user for two values and prompt the user to enter the two values.
 It will then print out the two values and tell the user whether or not the second value is a factor of the first value.
 --------------------------------------------------------------------------------------------------------------------*/
