@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date due : October 27, 2020
+Date: October 27, 2020
 Description : This program will ask the user for the name of a text file being used. The text file contains 4 integers
 that represent integer temperatures measured in degrees Celsius. The program will convert the degrees Celsius into
 degrees Fahrenheit and output the conversion for the user.
