@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date due : November 1, 2020
+Date: November 1, 2020
 Description :This program will determine which of a company’s four divisions
 (Northeast, Southeast, Northwest, and Southwest) had the greatest sales for a quarter.
 This program will then save the sales data to a file called "quarterlySales.txt"
