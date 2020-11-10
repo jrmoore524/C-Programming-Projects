@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date Due : September 20, 2020
+Date: September 20, 2020
 Description : This program will ask the user for the length and the width values of a rectangle (both doubles),
 calculate the diagonal from the users inputs, and output the length, width, and diagonal values of the rectangle
 ---------------------------------------------------------------------------------------------------------------*/
