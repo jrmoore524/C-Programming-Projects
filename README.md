@@ -1,2 +1,2 @@
 # Programming-Projects
-These are some of my C++ projects. I hope you enjoy them!
+These are some of my C++ projects. They are from beginner programs to intermediate programs. Please enjoy!
