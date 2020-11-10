@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date due : October 11, 2020
+Date: October 11, 2020
 Description : This program will give the user 3 choices.
 * For choice 1,the program will ask the user for two integers, and output the integers and their total. It will repeat
 this process until one of the numbers is negative. If one of the numbers is negative the program will tell the user that
