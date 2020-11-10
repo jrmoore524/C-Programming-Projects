@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date due : October 27, 2020
+Date: October 27, 2020
 Description : This program will ask the user for the name of a text file to get input from. The file will contain one
 string with at least 6 words. The program will then read the first five words from the file, and then save them to a 
 second file named "words.txt".
