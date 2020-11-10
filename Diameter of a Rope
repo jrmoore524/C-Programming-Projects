@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date Due : September 20, 2020
+Date: September 20, 2020
 Description : This program will ask the user for the weight (in pounds) of a item needed to be lifted by a rope.
 The program will then caluculate the diameter of the rope needed to lift the items weight, and output the diameter
 of the rope needed to lift that item
