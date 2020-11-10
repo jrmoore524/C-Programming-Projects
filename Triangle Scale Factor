@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date due : October 27, 2020
+Date: October 27, 2020
 Description : This program will ask the user for the name of a text file to get input from. The first three values
  in the text file will be the sides of a triangle, and the fourth value will be a interger scale factor. The program
  will then output the values for the sides of the triangle and the value of the sides with the scale factor applied.
