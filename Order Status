@@ -83,7 +83,7 @@ void displayHeader()
 
 /* -----------------------------------------------------------------------------
  Function : getSpoolsOrdered
- Receives :	user input for the number of spools being ordered
+ Receives : user input for the number of spools being ordered
  Description : This function will ask the user for the number of spools of copper
  wire being ordered by the customer
  Returns : spoolsOrdered
@@ -112,7 +112,7 @@ int getSpoolsOrdered()
 
 /* -----------------------------------------------------------------------------
  Function : getSpoolsInStock
- Receives :	user input for the number of spools that are currently in stock
+ Receives : user input for the number of spools that are currently in stock
  Description : This function will ask the user for the number of spools of copper
  wire that are currently in stock
  Returns : spoolsInStock
@@ -141,7 +141,7 @@ int getSpoolsInStock()
 
 /* -----------------------------------------------------------------------------
  Function : getBackOrderedSpools
- Receives :	totalSpoolsOrdered, totalSpoolsInStock
+ Receives : totalSpoolsOrdered, totalSpoolsInStock
  Description : This function will calculate the number of spools that will be on 
  backorder based on the total number of spools ordered and the total number of 
  spools that are currently in stock
@@ -165,7 +165,7 @@ int getBackorderedSpools(int totalSpoolsOrdered, int totalSpoolsInStock)
 
 /* -----------------------------------------------------------------------------
  Function : getSpoolsReadyToShip
- Receives :	totalSpoolsOrdered, totalBackorderedSpools
+ Receives : totalSpoolsOrdered, totalBackorderedSpools
  Description : This function will calculate the number of spools that are ready 
  to ship based on the total spools ordered and the total number of back ordered spools
  Returns : spoolsReadyToShip
@@ -188,7 +188,7 @@ int getSpoolsReadyToShip(int totalSpoolsOrdered, int totalBackorderedSpools)
 
 /* -----------------------------------------------------------------------------
  Function : getSpecialCharges
- Receives :	user input for any special shipping/handling charges for the order
+ Receives : user input for any special shipping/handling charges for the order
  Description : This function will ask the user if there is any special shipping
  or handling charges for the order
  Returns : specialCharges
@@ -209,7 +209,7 @@ double getSpecialCharges()
 
 /* -----------------------------------------------------------------------------
  Function : getSubTotal
- Receives :	totalSpoolsReadyToShip
+ Receives : totalSpoolsReadyToShip
  Description : This function will calculate the subtotal of the order based on
  the total spools ready to ship @ $100.00 per spool
  Returns : the subtotal
@@ -223,7 +223,7 @@ double getSubTotal(int totalSpoolsReadyToShip)
 
 /* -----------------------------------------------------------------------------
  Function : getOrderTotal
- Receives :	subTotal, totalSpecialCharges
+ Receives : subTotal, totalSpecialCharges
  Description : This function will calculate the order total based on the subtotal
  and any special charges for the order
  Returns : the order total
@@ -237,7 +237,7 @@ double getOrderTotal(double subTotal, double totalSpecialCharges)
 
 /* -----------------------------------------------------------------------------
  Function : displayOrderStatus
- Receives :	totalSpoolsOrdered, totalSpoolsInStock, totalBackorderedSpools, subTotal, totalSpecialCharges, orderTotal
+ Receives : totalSpoolsOrdered, totalSpoolsInStock, totalBackorderedSpools, subTotal, totalSpecialCharges, orderTotal
  Description : This function will display the entire order status for the user
  Returns : void
  Preconditions : none
