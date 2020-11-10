@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date due : November 8, 2020
+Date: November 8, 2020
 Description :This program will calculate the average of a group of test scores, where
 the lowest score in the group is dropped.
  ----------------------------------------------------------------------------------*/
