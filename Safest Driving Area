@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date due : November 1, 2020
+Date: November 1, 2020
 Description :This program will determine which of five geographic regions within a major city
 (North, South, East, West, and Central) had the fewest reported automobile accidents last year,
 and save the accident data to a file named "lowestYearlyAccidents.txt.
