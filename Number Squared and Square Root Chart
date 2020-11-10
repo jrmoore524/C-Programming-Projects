@@ -1,6 +1,6 @@
 /*---------------------------------------------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date due : October 18, 2020
+Date: October 18, 2020
 Description : This program will ask you for two integers, then output the value of the numbers squared, and their square root
 in a chart. The chart will include the squares and square roots of all the numbers in between the two numbers as well
  ---------------------------------------------------------------------------------------------------------------------------*/
