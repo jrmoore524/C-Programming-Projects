@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------------------
 Programmer : Jesse Moore
-Date: November 15, 2020
+Date due : November 15, 2020
 Description :This program will let the user enter 10 values into an array. The program 
 will then display the array, and the smallest and largest values stored in the array
  -------------------------------------------------------------------------------------*/
@@ -51,6 +51,7 @@ int main()
  Receives : numbers array
  Description : This funtions will get the users input for the 10 numbers in the 
  array
+ Returns : void
  Preconditions : none
  -----------------------------------------------------------------------------*/
 void getInput(int numbers[])
@@ -70,6 +71,7 @@ void getInput(int numbers[])
  Function : getSmallestValue	
  Receives : numbers array
  Description : This function will determine the smallest number in the array
+ Returns : smallest
  Preconditions : none
  -----------------------------------------------------------------------------*/
 int getSmallestValue(int numbers[])
@@ -99,6 +101,7 @@ int getSmallestValue(int numbers[])
  Function : getLargestValue
  Receives : numbers array
  Description : This function will determine the largest number in the array
+ Returns : largest
  Preconditions : none
  -----------------------------------------------------------------------------*/
 int getLargestValue(int numbers[])
@@ -129,6 +132,7 @@ int getLargestValue(int numbers[])
  Receives : numbers array, smallestValue, largestValue
  Description : This function will output the numbers in the array, and the smallest
  and largest values in the array
+ Returns : void
  Preconditions : none
  -----------------------------------------------------------------------------*/
 void outputValues(int numbers[], int smallestValue, int largestValue)
@@ -167,3 +171,4 @@ void outputValues(int numbers[], int smallestValue, int largestValue)
 	//Line break
 	cout << "\n" << endl;
 }
+
