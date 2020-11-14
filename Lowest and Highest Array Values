@@ -1,0 +1,169 @@
+/*-------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date: November 15, 2020
+Description :This program will let the user enter 10 values into an array. The program 
+will then display the array, and the smallest and largest values stored in the array
+ -------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+//Function prototypes
+void getInput(int []);
+int getSmallestValue(int []);
+int getLargestValue(int []);
+void outputValues(int[], int, int);
+
+//Global constant for array size
+const int ARRAY_SIZE = 10;
+
+//Main funtion
+int main()
+{
+	//Set Windows console system colors (Black background with green font) 
+	system("COLOR 02");
+
+	//Declare array named numbers and initialize array size to 10 (ARRAY_SIZE)
+	int numbers[ARRAY_SIZE];
+
+	//Call the getInput function to get the 10 numbers in the array from the user
+	getInput(numbers);
+
+	//Call the getSmallesValue function to determine the smallest number in the array
+	//and store in smallestValue
+	int smallestValue = getSmallestValue(numbers);
+
+	//Call the getLargestValue function to determine the largest number in the array
+	//and store in largestValue
+	int largestValue = getLargestValue(numbers);
+
+	//Call the outputValues function to output the array values, and the smallest 
+	//and largest values in the array
+	outputValues(numbers, smallestValue, largestValue);
+
+	//End the program
+	return 0;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getInput
+ Receives : numbers array
+ Description : This funtions will get the users input for the 10 numbers in the 
+ array
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+void getInput(int numbers[])
+{
+	//Ask the user to enter 10 values for an array
+	cout << "Please enter the 10 values for an array: " << endl;
+
+	//For loop to iterate through the array 10 times
+	for (int count = 0; count < 10; count++)
+		cin >> numbers[count];
+
+	//Line break
+	cout << "\n" << endl;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getSmallestValue	
+ Receives : numbers array
+ Description : This function will determine the smallest number in the array
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+int getSmallestValue(int numbers[])
+{
+	//To hold the counter
+	int count;
+
+	//To hold the smallest number in the array
+	int smallest;
+
+	//Set index 0 to king (smallest) number in the array
+	smallest = numbers[0];
+
+	//For loop to iterate through the array 10 times
+	for (count = 0; count < 10; count++)
+	{
+		//King of the mountain alghorithm to determine which number in the array is the smallest
+		if (numbers[count] < smallest)
+			smallest = numbers[count];
+	}
+
+	//Return the smallest number in the array
+	return smallest;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getLargestValue
+ Receives : numbers array
+ Description : This function will determine the largest number in the array
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+int getLargestValue(int numbers[])
+{
+	//To hold the counter
+	int count;
+
+	//To hold the largest number in the array
+	int largest;
+
+	//Set index 0 to King (largest) in the array
+	largest = numbers[0];
+
+	//For loop to iterate through the array 10 times
+	for (count = 0; count < 10; count++)
+	{
+		//King of the mountain alghorithm to determint which number in the array is the largest
+		if (numbers[count] > largest)
+			largest = numbers[count];
+	}
+
+	//Return the largest number in the array
+	return largest;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : outputValues
+ Receives : numbers array, smallestValue, largestValue
+ Description : This function will output the numbers in the array, and the smallest
+ and largest values in the array
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+void outputValues(int numbers[], int smallestValue, int largestValue)
+{
+	//To hold the counter
+	int count;
+
+	//To ouput the array
+	cout << "Your array values are: ";
+
+	//For loop to iterate through array 10 times
+	for (count = 0; count < 10; count++)
+	{
+		//If at index 0-8 in the array, put a comma after the value
+		if (count <= 8)
+			cout << numbers[count] << ", ";
+
+		//If at index 9, output "and" before value and do not put a comma after the value
+		if (count > 8)
+			cout << "and " << numbers[9];
+	}
+	cout << endl;
+
+	//Line break
+	cout << "\n" << endl;
+
+	//To output the smallest value in the array
+	cout << "The smallest value in the array is: " << smallestValue << endl;
+
+	//Line break
+	cout << "\n" << endl;
+
+	//To output the largest value in the array
+	cout << "The largest value in the array is: " << largestValue << endl;
+
+	//Line break
+	cout << "\n" << endl;
+}
