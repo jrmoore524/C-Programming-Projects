@@ -29,7 +29,7 @@ int main()
 	//Set Windows console system colors (Black background with green font) 
 	system("COLOR 02");
 
-	//Declare array named rainfall and initialize array size to 12 (ARRAY_SIZE)
+	//Declare array named rainfall and array named months and initialize array sizes to 12 (ARRAY_SIZE)
 	double rainfall[ARRAY_SIZE];
 	string months[ARRAY_SIZE] = { "January", "February", "March", "April",
 				      "May", "June", "July", "August", "September",
