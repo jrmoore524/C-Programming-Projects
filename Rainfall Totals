@@ -32,8 +32,8 @@ int main()
 	//Declare array named rainfall and initialize array size to 12 (ARRAY_SIZE)
 	double rainfall[ARRAY_SIZE];
 	string months[ARRAY_SIZE] = { "January", "February", "March", "April",
-								  "May", "June", "July", "August", "September",
-								  "October", "November", "December"};
+				      "May", "June", "July", "August", "September",
+				      "October", "November", "December"};
 
 	//Call the getInput function to read the rainfall data from the file into the array
 	getInput(rainfall);
