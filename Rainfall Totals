@@ -1,0 +1,308 @@
+/*----------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date: November 15, 2020
+Description :This program will let the user enter the total rainfall for each of 12 months
+into an array of doubles. The program will calculate and display the total rainfall for 
+the year, the average monthly rainfall, and the months with the highest and lowest amounts.
+ ----------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <fstream>
+using namespace std;
+
+//Function prototypes
+void getInput(double []);
+string getLowestMonth(double[]);
+string getHighestMonth(double[]);
+double getTotalRainfall(double[]);
+double getAverageRainfall(double);
+void outputResults(double[], string, string, double, double);
+
+//Global constant for array size
+const int ARRAY_SIZE = 12;
+
+//Main funtion
+int main()
+{
+	//Set Windows console system colors (Black background with green font) 
+	system("COLOR 02");
+
+	//Declare array named rainfall and initialize array size to 12 (ARRAY_SIZE)
+	double rainfall[ARRAY_SIZE];
+
+	//Call the getInput function to read the rainfall data from the file into the array
+	getInput(rainfall);
+
+	//Call the getLowestMonth function to determine which month had the lowest rainfall
+	//and store in lowestMonth
+	string lowestMonth = getLowestMonth(rainfall);
+
+	//Call the getHighestMonth function to determine which month had the highest rainfall
+	//and store in highestMonth
+	string highestMonth = getHighestMonth(rainfall);
+
+	//Call the getTotalRainfall function to determine the total rainfall for all 12 months
+	//and store in totalRainfall
+	double totalRainfall = getTotalRainfall(rainfall);
+
+	//Call the getAverageRainfall function to calculate the average rainfall for the 12 months
+	//and store in averageRainfall
+	double averageRainfall = getAverageRainfall(totalRainfall);
+
+	//Call the outputResults function to ouput the rainfall totals for the user
+	outputResults(rainfall, lowestMonth, highestMonth, averageRainfall, totalRainfall);
+	
+	//End the program
+	return 0;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getInput	
+ Receives : rainfall totals from file "monthlyRainfall.txt"
+ Description : This function will read the rainfall statistics from the file and
+ store the values in the array
+ Returns : void
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+void getInput(double rainfall[])
+{
+	//To hold the counter
+	int count = 0;
+
+	//Input file stream object
+	ifstream inputFile;
+
+	//Open the file containing 12 monthly rainfall totals
+	inputFile.open("monthlyRainfall.txt");
+
+	//If the file opened sucessfully
+	if (inputFile)
+	{
+		//Read the numbers from the file into the array
+		while ((count < ARRAY_SIZE) && (inputFile >> rainfall[count]))
+			count++;
+
+		//Close the file
+		inputFile.close();
+	}
+
+	//If the file did not open successfully
+	else
+		cout << "File open error. Please check the file name and try again." << endl;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getLowestMonth
+ Receives : rainfall array
+ Description : This function will determine which month had the lowest rainfall
+ Returns : lowestMonth ( a string )
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+string getLowestMonth(double rainfall[])
+{
+	//To hold the counter
+	int count;
+
+	//To hold the lowest rainfall total
+	double lowestRainfall;
+
+	//To hold the month with the lowest rainfall
+	string lowestMonth;
+	
+	//Set index 0 to the king
+	lowestRainfall = rainfall[0];
+
+	//For loop to iterate through the array 12 times
+	for (count = 0; count < 12; count++)
+	{
+		//King of the mountain alghorithm to determine which month had the lowest rainfall
+		if (rainfall[count] < lowestRainfall)
+			lowestRainfall = rainfall[count];
+	}
+
+	//Set array indexes to strings of the names of the months
+	if (lowestRainfall == rainfall[0])
+		lowestMonth = "January";
+	else if (lowestRainfall == rainfall[1])
+		lowestMonth = "February";
+	else if (lowestRainfall == rainfall[2])
+		lowestMonth = "March";
+	else if (lowestRainfall == rainfall[3])
+		lowestMonth = "April";
+	else if (lowestRainfall == rainfall[4])
+		lowestMonth = "May";
+	else if (lowestRainfall == rainfall[5])
+		lowestMonth = "June";
+	else if (lowestRainfall == rainfall[6])
+		lowestMonth = "July";
+	else if (lowestRainfall == rainfall[7])
+		lowestMonth = "August";
+	else if (lowestRainfall == rainfall[8])
+		lowestMonth = "September";
+	else if (lowestRainfall == rainfall[8])
+		lowestMonth = "October";
+	else if (lowestRainfall == rainfall[10])
+		lowestMonth = "November";
+	else if (lowestRainfall == rainfall[11])
+		lowestMonth = "December";
+
+	//Return the month with the lowest rainfall total
+	return lowestMonth;
+}
+/* -----------------------------------------------------------------------------
+ Function : getHighestMonth
+ Receives : rainfall array
+ Description : This function will determine which month had the highest rainfall
+ Returns : highestMonth ( a string )
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+string getHighestMonth(double rainfall[])
+{
+	//To hold the counter
+	int count;
+
+	//To hold the highest rainfall total
+	double highestRainfall;
+
+	//To hold the month with the highest rainfall
+	string highestMonth;
+
+	//Set the king to index 0
+	highestRainfall = rainfall[0];
+
+	//For loop to iterate through the array 12 times
+	for (count = 0; count < 12; count++)
+	{
+		//King of the mountain alghorithm to determine which month had the highest rainfall
+		if (rainfall[count] > highestRainfall)
+			highestRainfall = rainfall[count];
+	}
+
+	//Set array indexes to strings of the names of the months
+	if (highestRainfall == rainfall[0])
+		highestMonth = "January";
+	else if (highestRainfall == rainfall[1])
+		highestMonth = "February";
+	else if (highestRainfall == rainfall[2])
+		highestMonth = "March";
+	else if (highestRainfall == rainfall[3])
+		highestMonth = "April";
+	else if (highestRainfall == rainfall[4])
+		highestMonth = "May";
+	else if (highestRainfall == rainfall[5])
+		highestMonth = "June";
+	else if (highestRainfall == rainfall[6])
+		highestMonth = "July";
+	else if (highestRainfall == rainfall[7])
+		highestMonth = "August";
+	else if (highestRainfall == rainfall[8])
+		highestMonth = "September";
+	else if (highestRainfall == rainfall[8])
+		highestMonth = "October";
+	else if (highestRainfall == rainfall[10])
+		highestMonth = "November";
+	else if (highestRainfall == rainfall[11])
+		highestMonth = "December";
+
+	//Return the month with the highest rainfall total
+	return highestMonth;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getTotalRainfall
+ Receives : rainfall array
+ Description : This function will determine the total rainfall for all of the 
+ months
+ Returns : totalRainfall ( a double )
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+double getTotalRainfall(double rainfall[])
+{
+	//To hold the total rainfall
+	double totalRainfall = 0;
+
+	//For loop to total all of the rainfall values in the array
+	for (int count = 0; count < 12; count++)
+		totalRainfall += rainfall[count];
+
+	//Return the total rainfall
+	return totalRainfall;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getAverageRainfall
+ Receives : totalRainfall
+ Description : This function will determine the average rainfall for all of the
+ months
+ Returns : averageRainfall ( a double )
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+double getAverageRainfall(double totalRainfall)
+{
+	//To hold the average rainfall
+	double averageRainfall;
+
+	//Calculate the average rainfall
+	averageRainfall = totalRainfall / 12;
+
+	//Return the total rainfall
+	return averageRainfall;
+}
+
+/* ----------------------------------------------------------------------------------------
+ Function : outputResults
+ Receives : rainfall array, lowestMonth, highestMonth, averageRainfall, totalRainfall
+ Description : This function will output the rainfall results
+ Returns : void
+ Preconditions : none
+ -----------------------------------------------------------------------------------------*/
+void outputResults(double rainfall[], string lowestMonth, string highestMonth, double averageRainfall, double totalRainfall)
+{
+	//Set output formatting
+	cout << setprecision(2) << fixed << endl;
+
+	//To hold the counter
+	int count;
+
+	//To ouput the array values
+	cout << "The rainfall totals are for each month are: " << endl;
+
+	//Line break
+	cout << "\n" << endl;
+
+	//For loop to iterate through array 12 times
+	for (count = 0; count < 12; count++)
+	{
+		//To ouput the rainfall totals in the array
+		cout << rainfall[count] << " inches " << endl;
+	}
+
+	//Line break
+	cout << "\n" << endl;
+
+	//To output the month with the lowest rainfall total
+	cout << "The month with the lowest rainfall total is: " << lowestMonth << endl;
+
+	//Line break
+	cout << "\n" << endl;
+
+	//To output the month with the highest rainfall total
+	cout << "The month with the highest rainfall total is: " << highestMonth << endl;
+
+	//Line break
+	cout << "\n" << endl;
+
+	//To output the average rainfall total for the year
+	cout << "The average rainfall total for the year is: " << averageRainfall << " inches" << endl;
+
+	//Line break
+	cout << "\n" << endl;
+
+	//To output the rainfall total for the year
+	cout << "The rainfall total for the year is: " << totalRainfall << " inches" << endl;
+
+	//Line break
+	cout << "\n" << endl;
+}
