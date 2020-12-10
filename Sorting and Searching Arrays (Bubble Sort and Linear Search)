@@ -168,9 +168,9 @@ bool search(int numbers[SIZE], int value)
 
 /* -----------------------------------------------------------------------------
 Function : output
-Receives : the array of integers and the boolean variable
-Description : This function will output the array of integers and whether or not
-the users inputted value was found in the array
+Receives : the array of integers, the users value, and the boolean variable
+Description : This function will output the array of integers, the users value,
+and whether or not the users inputted value was found in the array
 Returns : void
 Preconditions : none
 -----------------------------------------------------------------------------*/
@@ -182,7 +182,7 @@ void output(int numbers[SIZE], int value, bool isFound)
 	//For loop to iterate through the sorted array
 	for (int count = 0; count < SIZE; count++)
 	{
-		//Output the array
+		//Output the sorted array
 		cout << numbers[count];
 
 		//Line break
