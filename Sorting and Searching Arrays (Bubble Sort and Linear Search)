@@ -1,0 +1,206 @@
+/*------------------------------------------------------------------------------------------
+Programmer : Jesse Moore
+Date: December 8, 2020
+Description : Sorting and Searching Arrays (Bubble Sort and Linear Search)
+------------------------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <iomanip>
+using namespace std;
+
+//Global constant for array size
+int const SIZE = 200;
+
+//Function prototypes
+void getInput(int[SIZE]);
+void sort(int[SIZE]);
+int getValue();
+bool search(int[SIZE], int);
+void output(int[SIZE], int, bool);
+
+//Main function
+int main()
+{
+	//Array of 200 numbers
+	int numbers[SIZE];
+
+	//Call the getInput function to get the 200 integers from the file and store
+	//in the array
+	getInput(numbers);
+
+	//Line break
+	cout << "\n";
+
+	//Call the sort function to sort the array
+	sort(numbers);
+
+	//Call the get value function to get the value to be searched for by the user
+	int value = getValue();
+
+	//Line break
+	cout << "\n";
+
+	//Call the search function to search the array for the users inputted value
+	bool isFound = search(numbers, value);
+
+	//Call the output function to output the array and whether or not the users
+	//value was in the array
+	output(numbers, value, isFound);
+
+	//End the program
+	return 0;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : getInput
+ Receives : The array of integers
+ Description : This function will get the 200 integers from a file selected by
+ the user and store the integers in the array
+ Returns : void
+ Preconditions : none 
+ -----------------------------------------------------------------------------*/
+void getInput(int numbers[SIZE])
+{
+	//File stream object
+	ifstream inputFile;
+
+	//To hold the filename
+	string file;
+
+	//Get the filename from the user
+	cout << "Please enter the filename:" << endl;
+	getline(cin, file);
+
+	//Open the file
+	inputFile.open(file);
+
+	//If the file opened correctly, proceed with reading the file to the array
+	if (inputFile)
+	{
+		//For loop to iterate through the array and store the file integers in the array
+		for (int count = 0; count < SIZE; count++)
+			inputFile >> numbers[count];
+
+		//Close the file after processing 
+		inputFile.close();
+	}
+	//If the file did not open correcly
+	else
+		cout << "File open error" << endl;
+}
+
+/* -----------------------------------------------------------------------------
+Function : sort
+Receives : The array of integers
+Description : This function will use the bubble sort to sort the array of integers
+Returns : void
+Preconditions : none
+  -----------------------------------------------------------------------------*/
+void sort(int numbers[SIZE])
+{
+	//To hold the boolean value
+	bool swap;
+
+	//To hold the temporary value
+	int temp;
+	
+	//Bubble sort to sort the array
+	do
+	{
+		swap = false;
+		for (int count = 0; count < (SIZE - 1); count++)
+		{
+			if (numbers[count] > numbers[count + 1])
+			{
+				temp = numbers[count];
+				numbers[count] = numbers[count + 1];
+				numbers[count + 1] = temp;
+				swap = true;
+			}
+		}
+	} while (swap);
+}
+/* -------------------------------------------------------------------------------
+Function : getValue
+Receives : input from the user
+Description : This function will get a value from the user to search for in the array
+Return : value (a int)
+Preconditions : none
+--------------------------------------------------------------------------------*/
+int getValue()
+{
+	//To hold the value to be searched for by the user
+	int value;
+
+	//Get the value to be searched for by the user
+	cout << "Please enter a value to search for:" << endl;
+	cin >> value;
+
+	//Return the value to be searched for
+	return value;
+}
+
+/* -----------------------------------------------------------------------------
+ Function : search
+ Receives : the array of integers, users value
+ Description : This funtion will use the linear search to search the function for
+ the users inputted value
+ Returns : found (a bool)
+ Preconditions : none
+ -----------------------------------------------------------------------------*/
+bool search(int numbers[SIZE], int value)
+{
+	//To hold the boolean value and set to false
+	bool isFound = false;
+
+	//For loop to iterate through the array
+	for (int count = 0; count < SIZE; count++)
+	{
+		//If value is found set bool to true
+		if (numbers[count] == value)
+			isFound = true;
+	}
+	//Return the boolean value
+	return isFound;
+}
+
+/* -----------------------------------------------------------------------------
+Function : output
+Receives : the array of integers and the boolean variable
+Description : This function will output the array of integers and whether or not
+the users inputted value was found in the array
+Returns : void
+Preconditions : none
+-----------------------------------------------------------------------------*/
+void output(int numbers[SIZE], int value, bool isFound)
+{
+	//Output the sorted array
+	cout << "The sorted array:" << endl;
+
+	//For loop to iterate through the sorted array
+	for (int count = 0; count < SIZE; count++)
+	{
+		//Output the array
+		cout << numbers[count];
+
+		//Line break
+		cout << "\n";
+	}
+	
+	//Line break
+	cout << "\n";
+
+	//Output if users value is in the array
+	if (isFound)
+		cout << "The value " << value << " is in the array" << endl;
+
+	//Output if users value is not in the array
+	else
+		cout << "The value " << value << " is not in the array" << endl;
+}
+
+	
+
+	 
