@@ -7,7 +7,6 @@ Description : Sorting and Searching Arrays (Bubble Sort and Linear Search)
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <iomanip>
 using namespace std;
 
 //Global constant for array size
